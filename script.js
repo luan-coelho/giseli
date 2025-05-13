@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize carousel
   initCarousel();
+  
+  // Menu functionality
+  initMenuFunctionality();
+  
+  // Scroll button functionality
+  initScrollButton();
+  
+  // Section transitions
+  initSectionTransitions();
 });
 
 // Animate elements when they come into view
@@ -56,20 +65,36 @@ function initScrollAnimations() {
 // Navbar background and blur effect on scroll
 function initNavbarScroll() {
   const navbar = document.querySelector('.navbar');
+  const homeSection = document.getElementById('home');
   
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.style.background = 'rgba(10, 21, 40, 0.95)';
-      navbar.style.backdropFilter = 'blur(15px)';
-      navbar.style.padding = '0.8rem 0';
-      navbar.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.3)';
+  function updateNavbarStyle() {
+    const homeHeight = homeSection ? homeSection.offsetHeight : 0;
+    const scrollPosition = window.scrollY;
+    const isInHomeSection = scrollPosition < homeHeight - 100;
+    
+    // Add or remove scrolled class based on whether we're in the home section
+    if (!isInHomeSection) {
+      navbar.classList.add('scrolled');
     } else {
-      navbar.style.background = 'rgba(10, 21, 40, 0.8)';
-      navbar.style.backdropFilter = 'blur(10px)';
-      navbar.style.padding = '1.2rem 0';
-      navbar.style.boxShadow = '0 5px 25px rgba(0, 0, 0, 0.2)';
+      navbar.classList.remove('scrolled');
     }
-  });
+    
+    // Still handle shrink effect based on scroll amount
+    if (scrollPosition > 100) {
+      navbar.classList.add('shrink');
+    } else {
+      navbar.classList.remove('shrink');
+    }
+  }
+  
+  // Initial update
+  updateNavbarStyle();
+  
+  // Update on scroll
+  window.addEventListener('scroll', updateNavbarStyle);
+  
+  // Update on window resize (in case dimensions change)
+  window.addEventListener('resize', updateNavbarStyle);
 }
 
 // Smooth scroll for anchor links
@@ -266,4 +291,132 @@ buttons.forEach(button => {
     button.style.transform = 'translateY(0)';
     button.style.boxShadow = '0 4px 15px rgba(14, 33, 62, 0.2)';
   });
-}); 
+});
+
+// Menu functionality
+function initMenuFunctionality() {
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+  
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+  }
+  
+  // Active menu item based on scroll position
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav ul li a');
+  
+  function highlightNavItem() {
+    const scrollPosition = window.scrollY;
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+      
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', highlightNavItem);
+  
+  // Smooth scrolling for menu links
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Close mobile menu if open
+      if (navMenu.classList.contains('active')) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+      
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop - 70,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
+// Add scroll button functionality
+function initScrollButton() {
+  const scrollBtn = document.querySelector('.scroll-btn');
+  const aboutSection = document.getElementById('about');
+  
+  if (scrollBtn && aboutSection) {
+    scrollBtn.addEventListener('click', function() {
+      window.scrollTo({
+        top: aboutSection.offsetTop - 70,
+        behavior: 'smooth'
+      });
+    });
+  }
+}
+
+// Section transitions
+function initSectionTransitions() {
+  const sections = document.querySelectorAll('section');
+  const viewportHeight = window.innerHeight;
+  
+  function checkTransitions() {
+    sections.forEach(section => {
+      const sectionTop = section.getBoundingClientRect().top;
+      const sectionBottom = section.getBoundingClientRect().bottom;
+      
+      // When section enters viewport
+      if (sectionTop < viewportHeight * 0.75 && sectionBottom > 0) {
+        section.classList.add('section-transition-in');
+        section.classList.remove('section-transition-out');
+        
+        // Get all elements with data-scroll-animate within this section
+        const animatedElements = section.querySelectorAll('[data-scroll-animate]');
+        animatedElements.forEach((el, index) => {
+          // Add a slight delay for each element to create a cascade effect
+          setTimeout(() => {
+            el.classList.add('animate');
+          }, index * 100); // 100ms delay between each element
+        });
+      } 
+      // When section leaves viewport
+      else if (sectionTop > viewportHeight || sectionBottom < 0) {
+        section.classList.remove('section-transition-in');
+        
+        // Get all animated elements in this section
+        const animatedElements = section.querySelectorAll('[data-scroll-animate].animate');
+        animatedElements.forEach(el => {
+          el.classList.remove('animate');
+        });
+      }
+    });
+  }
+  
+  // Initial check
+  checkTransitions();
+  
+  // Check on scroll
+  window.addEventListener('scroll', () => {
+    checkTransitions();
+  });
+  
+  // Check on resize
+  window.addEventListener('resize', () => {
+    checkTransitions();
+  });
+} 
