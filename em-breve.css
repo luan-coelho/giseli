@@ -110,6 +110,9 @@
         -webkit-text-fill-color: transparent;
         position: relative;
         z-index: 2;
+        min-width: 100%;
+        margin-top: 2rem;    
+        margin-bottom: 2rem;    
       }
 
       /* Carrossel de citações */
@@ -370,8 +373,7 @@
         animation: fadeIn 1s ease-out;
         z-index: 2;
         position: relative;
-        width: 100%;
-        max-width: 1200px;
+        min-width: 100%;
       }
 
       .terminal-effect {
