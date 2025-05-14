@@ -130,162 +130,162 @@ function initSmoothScroll() {
 
 // Carousel functionality
 function initCarousel() {
-  const track = document.querySelector('.carousel-track');
-  const slides = Array.from(document.querySelectorAll('.carousel-slide'));
-  const prevButton = document.querySelector('.carousel-control.prev');
-  const nextButton = document.querySelector('.carousel-control.next');
-  const indicators = Array.from(document.querySelectorAll('.indicator'));
+  const carouselContainers = document.querySelectorAll('.carousel-container');
   
-  if (!track || slides.length === 0) return;
+  if (carouselContainers.length === 0) return;
   
-  let currentIndex = 0;
-  let slidesToShow = window.innerWidth > 992 ? 2 : 1;
-  
-  // Set initial position
-  updateCarousel();
-  
-  // Handle window resize
-  window.addEventListener('resize', () => {
-    const newSlidesToShow = window.innerWidth > 992 ? 2 : 1;
-    if (newSlidesToShow !== slidesToShow) {
-      slidesToShow = newSlidesToShow;
-      currentIndex = Math.min(currentIndex, slides.length - slidesToShow);
-      if (currentIndex < 0) currentIndex = 0;
-      updateCarousel();
-    }
-  });
-  
-  // Event listeners
-  if (prevButton) {
-    prevButton.addEventListener('click', () => {
-      currentIndex = Math.max(0, currentIndex - slidesToShow);
-      updateCarousel();
-    });
-  }
-  
-  if (nextButton) {
-    nextButton.addEventListener('click', () => {
-      currentIndex = Math.min(slides.length - slidesToShow, currentIndex + slidesToShow);
-      updateCarousel();
-    });
-  }
-  
-  indicators.forEach(indicator => {
-    indicator.addEventListener('click', () => {
-      const clickedIndex = parseInt(indicator.getAttribute('data-index'));
-      // Adjust to show the correct group
-      currentIndex = Math.floor(clickedIndex / slidesToShow) * slidesToShow;
-      updateCarousel();
-    });
-  });
-  
-  // Auto advance slide every 7 seconds
-  let autoplayInterval = setInterval(() => {
-    if (currentIndex < slides.length - slidesToShow) {
-      currentIndex += slidesToShow;
-    } else {
-      currentIndex = 0;
-    }
-    updateCarousel();
-  }, 7000);
-  
-  // Pause autoplay on hover
-  track.addEventListener('mouseenter', () => {
-    clearInterval(autoplayInterval);
-  });
-  
-  track.addEventListener('mouseleave', () => {
-    autoplayInterval = setInterval(() => {
-      if (currentIndex < slides.length - slidesToShow) {
-        currentIndex += slidesToShow;
-      } else {
-        currentIndex = 0;
-      }
-      updateCarousel();
-    }, 7000);
-  });
-  
-  // Update carousel position and active states
-  function updateCarousel() {
-    // Calculate percentage to move based on slides to show
-    const slideWidth = 100 / slidesToShow;
-    track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+  carouselContainers.forEach(container => {
+    const track = container.querySelector('.carousel-track');
+    const slides = Array.from(container.querySelectorAll('.carousel-slide'));
+    const prevButton = container.querySelector('.carousel-control.prev');
+    const nextButton = container.querySelector('.carousel-control.next');
     
-    // Update active classes on slides
-    slides.forEach((slide, index) => {
-      if (index >= currentIndex && index < currentIndex + slidesToShow) {
-        slide.classList.add('active');
-      } else {
-        slide.classList.remove('active');
-      }
-    });
+    if (!track || slides.length === 0) return;
     
-    // Update indicator active state based on which group is shown
-    const activeIndicatorIndex = Math.floor(currentIndex / slidesToShow);
-    const totalGroups = Math.ceil(slides.length / slidesToShow);
+    let currentIndex = 0;
+    const totalSlides = slides.length;
     
-    // If we need to adjust indicators
-    if (indicators.length !== totalGroups) {
-      // Just highlight the first indicator for the active group
-      indicators.forEach((indicator, index) => {
-        const groupStart = index * slidesToShow;
-        const isActive = currentIndex >= groupStart && currentIndex < groupStart + slidesToShow;
-        if (isActive) {
-          indicator.classList.add('active');
-        } else {
-          indicator.classList.remove('active');
-        }
-      });
-    } else {
-      indicators.forEach((indicator, index) => {
-        if (index === activeIndicatorIndex) {
-          indicator.classList.add('active');
-        } else {
-          indicator.classList.remove('active');
-        }
+    // Clone slides for infinite loop if needed
+    if (totalSlides < 5) {
+      slides.forEach(slide => {
+        const clone = slide.cloneNode(true);
+        track.appendChild(clone);
       });
     }
     
-    // Disable/enable navigation buttons
+    // Get updated slides after cloning
+    const allSlides = Array.from(container.querySelectorAll('.carousel-slide'));
+    
+    // Set initial position with center slide active
+    updateSlidePosition();
+    
+    // Create neural connection effect for AI theme
+    createNeuralConnections();
+    
+    // Event listeners
     if (prevButton) {
-      prevButton.disabled = currentIndex === 0;
-      prevButton.classList.toggle('disabled', currentIndex === 0);
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + allSlides.length) % allSlides.length;
+        updateSlidePosition();
+      });
     }
     
     if (nextButton) {
-      const isLast = currentIndex >= slides.length - slidesToShow;
-      nextButton.disabled = isLast;
-      nextButton.classList.toggle('disabled', isLast);
-    }
-  }
-  
-  // Touch and swipe support
-  let touchStartX = 0;
-  let touchEndX = 0;
-  
-  track.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-  
-  track.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  }, { passive: true });
-  
-  function handleSwipe() {
-    const swipeThreshold = 50;
-    if (touchEndX < touchStartX - swipeThreshold) {
-      // Swipe left, go to next slide group
-      currentIndex = Math.min(slides.length - slidesToShow, currentIndex + slidesToShow);
-      updateCarousel();
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % allSlides.length;
+        updateSlidePosition();
+      });
     }
     
-    if (touchEndX > touchStartX + swipeThreshold) {
-      // Swipe right, go to previous slide group
-      currentIndex = Math.max(0, currentIndex - slidesToShow);
-      updateCarousel();
+    // Auto advance slide every 5 seconds
+    let autoplayInterval = setInterval(autoAdvance, 5000);
+    
+    // Pause autoplay on hover
+    container.addEventListener('mouseenter', () => {
+      clearInterval(autoplayInterval);
+    });
+    
+    container.addEventListener('mouseleave', () => {
+      autoplayInterval = setInterval(autoAdvance, 5000);
+    });
+    
+    function autoAdvance() {
+      currentIndex = (currentIndex + 1) % allSlides.length;
+      updateSlidePosition();
     }
-  }
+    
+    function updateSlidePosition() {
+      // Remove all class states
+      allSlides.forEach(slide => {
+        slide.classList.remove('active', 'prev', 'next');
+      });
+      
+      // Set active slide
+      allSlides[currentIndex].classList.add('active');
+      
+      // Set previous slide
+      const prevIndex = (currentIndex - 1 + allSlides.length) % allSlides.length;
+      allSlides[prevIndex].classList.add('prev');
+      
+      // Set next slide
+      const nextIndex = (currentIndex + 1) % allSlides.length;
+      allSlides[nextIndex].classList.add('next');
+      
+      // Calculate translateX value to center the active slide
+      const slideWidth = 100 / 3; // 33.33% per slide
+      let translateX;
+      
+      // If we're at the beginning or end, we need special handling for smooth infinite loop
+      translateX = -currentIndex * slideWidth + (100 - slideWidth) / 2;
+      
+      // Apply transform
+      track.style.transform = `translateX(${translateX}%)`;
+    }
+    
+    function createNeuralConnections() {
+      allSlides.forEach(slide => {
+        // Create neural connections container
+        const neuralContainer = document.createElement('div');
+        neuralContainer.className = 'neural-connections';
+        slide.querySelector('.about-card').appendChild(neuralContainer);
+        
+        // Add random neural particles
+        for (let i = 0; i < 8; i++) {
+          const particle = document.createElement('span');
+          particle.className = 'neural-particle';
+          
+          // Random position
+          const randomX = Math.random() * 100;
+          const randomY = Math.random() * 100;
+          particle.style.left = `${randomX}%`;
+          particle.style.top = `${randomY}%`;
+          
+          // Random animation delay and duration
+          const randomDelay = Math.random() * 2;
+          const randomDuration = 2 + Math.random() * 3;
+          particle.style.animationDelay = `${randomDelay}s`;
+          particle.style.animationDuration = `${randomDuration}s`;
+          
+          // Random color variation
+          const hue = Math.random() < 0.5 ? 
+                       Math.random() * 20 + 30 : // Gold (accent color)
+                       Math.random() * 30 + 210; // Blue (primary color)
+          particle.style.background = `hsla(${hue}, 80%, 60%, 0.8)`;
+          particle.style.boxShadow = `0 0 10px 2px hsla(${hue}, 80%, 60%, 0.3)`;
+          
+          // Custom animation direction
+          const randomAngle = Math.random() * 360;
+          const distance = 50 + Math.random() * 100;
+          const endX = Math.cos(randomAngle * Math.PI / 180) * distance;
+          const endY = Math.sin(randomAngle * Math.PI / 180) * distance;
+          
+          particle.style.setProperty('--end-x', `${endX}px`);
+          particle.style.setProperty('--end-y', `${endY}px`);
+          
+          neuralContainer.appendChild(particle);
+        }
+      });
+      
+      // Add custom animation to CSS
+      const styleSheet = document.createElement('style');
+      styleSheet.innerHTML = `
+        @keyframes moveParticle {
+          0% {
+            transform: translate(0, 0);
+            opacity: 0;
+          }
+          30%, 70% {
+            opacity: 1;
+          }
+          100% {
+            transform: translate(var(--end-x, 100px), var(--end-y, -100px));
+            opacity: 0;
+          }
+        }
+      `;
+      document.head.appendChild(styleSheet);
+    }
+  });
 }
 
 // Button hover effects
