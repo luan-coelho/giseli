@@ -19,6 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Section transitions
   initSectionTransitions();
+  
+  // Adiciona a animação aos medidores de impacto
+  initImpactMeterAnimations();
+  
+  // Animação das partículas na seção de contato
+  initContactParticles();
+  
+  // Inicializar links de contato (anti-bot)
+  initContactLinks();
 });
 
 // Animate elements when they come into view
@@ -419,4 +428,143 @@ function initSectionTransitions() {
   window.addEventListener('resize', () => {
     checkTransitions();
   });
+}
+
+// Adiciona a animação aos medidores de impacto
+function initImpactMeterAnimations() {
+  // Observador de interseção para detectar quando os elementos entram na tela
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // Verifica se o elemento está visível na tela
+      if (entry.isIntersecting) {
+        // Adiciona a classe animate para iniciar a animação
+        entry.target.classList.add('animate');
+        
+        // Configura a variável CSS personalizada para o preenchimento do medidor
+        const meterFill = entry.target.querySelector('.meter-fill');
+        if (meterFill) {
+          const width = meterFill.style.width;
+          meterFill.style.setProperty('--fill-width', width);
+        }
+        
+        // Para de observar após a animação
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2 // Inicia a animação quando 20% do elemento está visível
+  });
+  
+  // Observa todos os cartões de impacto
+  document.querySelectorAll('.impact-card').forEach(card => {
+    observer.observe(card);
+  });
+}
+
+// Animação das partículas na seção de contato
+function initContactParticles() {
+  const contactParticles = document.querySelector('.contact-particles');
+  
+  if (contactParticles) {
+    // Adiciona event listener para movimento de mouse na seção de contato
+    const contactSection = document.getElementById('contact');
+    
+    contactSection.addEventListener('mousemove', (e) => {
+      const particles = contactParticles.querySelectorAll('.particle');
+      
+      // Pega a posição relativa do mouse dentro da seção
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      
+      // Movimento suave das partículas baseado na posição do mouse
+      particles.forEach((particle, index) => {
+        // Diferentes movimentos para cada partícula
+        const factor = (index % 3 + 1) * 0.02;
+        const xOffset = (mouseX - window.innerWidth / 2) * factor;
+        const yOffset = (mouseY - window.innerHeight / 2) * factor;
+        
+        // Aplica transformação CSS para mover as partículas
+        particle.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+      });
+    });
+    
+    // Restaura a posição quando o mouse sai da seção
+    contactSection.addEventListener('mouseleave', () => {
+      const particles = contactParticles.querySelectorAll('.particle');
+      particles.forEach(particle => {
+        particle.style.transform = 'translate(0, 0)';
+      });
+    });
+  }
+  
+  // Animação para os itens de contato ao passar o mouse
+  const contactItems = document.querySelectorAll('.contact-item');
+  contactItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      item.style.transform = 'translateY(-10px) scale(1.03)';
+    });
+    
+    item.addEventListener('mouseleave', () => {
+      item.style.transform = '';
+    });
+  });
+}
+
+// Function to initialize contact links
+function initContactLinks() {
+  // Email link
+  const emailLink = document.getElementById('email-link');
+  if (emailLink) {
+    const emailParts = ['giseli', '.ia', '@', 'tjto', '.jus', '.br'];
+    const emailAddress = emailParts.join('');
+    
+    // Set href attribute
+    emailLink.setAttribute('href', 'mailto:' + emailAddress);
+    
+    // Add hover event to show email on hover
+    emailLink.addEventListener('mouseenter', function() {
+      const textContainer = this.querySelector('.contact-text');
+      if (textContainer && !textContainer.querySelector('span')) {
+        const emailSpan = document.createElement('span');
+        emailSpan.classList.add('contact-info-text');
+        emailSpan.textContent = emailAddress;
+        textContainer.appendChild(emailSpan);
+      }
+    });
+    
+    emailLink.addEventListener('mouseleave', function() {
+      const emailSpan = this.querySelector('.contact-info-text');
+      if (emailSpan) {
+        emailSpan.remove();
+      }
+    });
+  }
+  
+  // Instagram link
+  const instagramLink = document.getElementById('instagram-link');
+  if (instagramLink) {
+    const instagramParts = ['https://instagram.com/', 'giseli', '.ia'];
+    const instagramUrl = instagramParts.join('');
+    
+    // Set href attribute
+    instagramLink.setAttribute('href', instagramUrl);
+    
+    // Add hover event to show username on hover
+    instagramLink.addEventListener('mouseenter', function() {
+      const textContainer = this.querySelector('.contact-text');
+      if (textContainer && !textContainer.querySelector('span')) {
+        const instaSpan = document.createElement('span');
+        instaSpan.classList.add('contact-info-text');
+        instaSpan.textContent = '@' + instagramParts[1] + instagramParts[2];
+        textContainer.appendChild(instaSpan);
+      }
+    });
+    
+    instagramLink.addEventListener('mouseleave', function() {
+      const instaSpan = this.querySelector('.contact-info-text');
+      if (instaSpan) {
+        instaSpan.remove();
+      }
+    });
+  }
 } 

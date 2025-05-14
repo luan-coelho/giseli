@@ -1,576 +1,879 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GiseLi - Inteligência Artificial Extrajudicial</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="navbar">
-    <div class="container">
-      <div class="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#home" class="active">Início</a></li>
-          <li><a href="#about">Sobre</a></li>
-          <li><a href="#statistics">Estatísticas</a></li>
-          <li><a href="#ai-analysis">Análise IA</a></li>
-          <li><a href="#future-impact">Impacto Futuro</a></li>
-          <li><a href="#other-tools">Outras Ferramentas</a></li>
-          <li><a href="#contact">Contato</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section id="home" class="hero">
-      <canvas id="galaxy-canvas"></canvas>
-      <div class="container centered-hero">
-        <div class="hero-content animate-in">
-          <span class="hero-subtitle">Inteligência Artificial Extrajudicial</span>
-          <div class="hero-image animate-in">
-            <img src="giseli_branco_c_texto.png" alt="GiseLi Interface">
-          </div>
-          <p>Sistema de Gestão Integrada das Serventias Extrajudiciais com Linguagem Inteligente</p>
-          <button class="btn-primary scroll-btn">
-            <span>Role para baixo</span>
-            <i class="ph ph-arrow-down"></i>
-          </button>
-        </div>
-      </div>
-      <div class="section-divider"></div>
-    </section>
-
-    <section id="about" class="about">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GiseLi - Inteligência Artificial Extrajudicial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="navbar">
       <div class="container">
-        <h2 class="section-title">Sobre</h2>
-        
-        <div class="about-intro">
-          <p>A GiseLi faz parte de um ecossistema de soluções tecnológicas que visa aprimorar o serviço extrajudicial no Estado do Tocantins. Conheça abaixo as instituições e sistemas que integram esse projeto inovador.</p>
+        <div class="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
-        
-        <div class="about-carousel">
-          <div class="carousel-container">
-            <div class="carousel-track">
-              <div class="carousel-slide active" data-index="0">
-                <div class="about-card" data-scroll-animate>
-                  <div class="about-card-image">
-                    <img src="https://www.tjto.jus.br/images/tema/tjto_logo_horizontal_branco.svg" alt="TJTO">
-                  </div>
-                  <div class="about-card-content">
-                    <h3>TJTO</h3>
-                    <p>O Tribunal de Justiça do Estado do Tocantins é a instância mais alta do Poder Judiciário tocantinense e tem por missão garantir a cidadania através da distribuição de uma justiça célere, segura e eficaz.</p>
-                    <a href="https://www.tjto.jus.br/institucional/conheca-o-tjto" target="_blank" class="link-arrow">
-                      Saiba mais sobre o TJTO
-                      <i class="ph ph-arrow-right"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
+        <nav>
+          <ul>
+            <li><a href="#home" class="active">Início</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#statistics">Estatísticas</a></li>
+            <li><a href="#ai-analysis">Análise IA</a></li>
+            <li><a href="#future-impact">Impacto Futuro</a></li>
+            <li><a href="#other-tools">Outras Ferramentas</a></li>
+            <li><a href="#contact">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-              <div class="carousel-slide" data-index="1">
-                <div class="about-card" data-scroll-animate>
-                  <div class="about-card-image">
-                    <img src="https://corregedoria.tjto.jus.br/images/tema/logo_corregedoria.svg" alt="CGJUS">
-                  </div>
-                  <div class="about-card-content">
-                    <h3>CGJUS</h3>
-                    <p>A Corregedoria-Geral da Justiça do Estado do Tocantins, órgão integrante do Poder Judiciário, tem suas atribuições regulamentadas por leis e resoluções, e suas atividades são voltadas ao controle, orientação e fiscalização dos serviços judiciais e extrajudiciais prestados no âmbito do Estado do Tocantins.</p>
-                    <a href="https://corregedoria.tjto.jus.br/institucional/sobre-a-corregedoria" target="_blank" class="link-arrow">
-                      Saiba mais sobre a CGJUS
-                      <i class="ph ph-arrow-right"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="carousel-slide" data-index="2">
-                <div class="about-card" data-scroll-animate>
-                  <div class="about-card-image">
-                    <img src="gise_branco_c_texto.png" alt="GISE">
-                  </div>
-                  <div class="about-card-content">
-                    <h3>GISE</h3>
-                    <p>O Sistema GISE (Sistema de Gestão Integrada das Serventias Extrajudiciais) é uma ferramenta eletrônica de acompanhamento dos atos praticados pelas serventias extrajudiciais (cartórios) do Estado do Tocantins, interligando-as à Corregedoria-Geral da Justiça do Estado do Tocantins.</p>
-                    <p>Instituído pela "Resolução Nº 13, de 19 de setembro de 2011", o GISE tem o papel de centralizar as informações extrajudiciais a fim de prover os recursos tecnológicos necessários para que a CGJUS exerça sua missão.</p>
-                    <a href="https://wwa.tjto.jus.br/elegis/Home/Imprimir/377" target="_blank" class="link-arrow">
-                      Leia a Resolução Nº 13
-                      <i class="ph ph-arrow-right"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="carousel-slide" data-index="3">
-                <div class="about-card" data-scroll-animate>
-                  <div class="about-card-image">
-                    <img src="giseli_branco_c_texto.png" alt="GiseLI">
-                  </div>
-                  <div class="about-card-content">
-                    <h3>GiseLI</h3>
-                    <p>GiseLI (Sistema de Gestão Integrada das Serventias Extrajudiciais com Linguagem Inteligente) é a Inteligência Artificial Extrajudicial do Tocantins que permite a análise em larga escala dos atos praticados na prestação jurisdicional extrajudicial do estado.</p>
-                    <p>Parte dessa análise se dará nas Correições Extrajudiciais, que outrora eram Físicas e Presenciais. A GiseLI nos permitirá alcançar a Correição Inteligente através do uso de LLM que identificará possíveis discrepâncias nos atos extrajudiciais.</p>
-                  </div>
-                </div>
-              </div>
+    <main>
+      <section id="home" class="hero">
+        <canvas id="galaxy-canvas"></canvas>
+        <div class="container centered-hero">
+          <div class="hero-content animate-in">
+            <span class="hero-subtitle"
+              >Inteligência Artificial Extrajudicial</span
+            >
+            <div class="hero-image animate-in">
+              <img src="giseli_branco_c_texto.png" alt="GiseLi Interface" />
             </div>
-          </div>
-
-          <div class="carousel-controls">
-            <button class="carousel-control prev" aria-label="Anterior">
-              <i class="ph ph-caret-left"></i>
-            </button>
-            <div class="carousel-indicators">
-              <button class="indicator active" data-index="0" aria-label="Grupo 1"></button>
-              <button class="indicator" data-index="2" aria-label="Grupo 2"></button>
-            </div>
-            <button class="carousel-control next" aria-label="Próximo">
-              <i class="ph ph-caret-right"></i>
+            <p>
+              Sistema de Gestão Integrada das Serventias Extrajudiciais com
+              Linguagem Inteligente
+            </p>
+            <button class="btn-primary scroll-btn">
+              <span>Role para baixo</span>
+              <i class="ph ph-arrow-down"></i>
             </button>
           </div>
         </div>
-      </div>
-      <div class="section-divider"></div>
-    </section>
+      </section>
 
-    <section id="statistics" class="statistics">
-      <div class="container">
-        <h2 class="section-title">Estatísticas</h2>
-        
-        <div class="stats-container">
-          <div class="stat-card" data-scroll-animate>
-            <i class="ph ph-calendar"></i>
-            <h3>14</h3>
-            <p>anos de dados recebidos</p>
-          </div>
-          
-          <div class="stat-card" data-scroll-animate>
-            <i class="ph ph-buildings"></i>
-            <h3>239</h3>
-            <p>cartórios ativos</p>
-          </div>
-          
-          <div class="stat-card" data-scroll-animate>
-            <i class="ph ph-file-text"></i>
-            <h3>68</h3>
-            <p>milhões de atos realizados</p>
-          </div>
-          
-          <div class="stat-card" data-scroll-animate>
-            <i class="ph ph-files"></i>
-            <h3>2.5</h3>
-            <p>milhões de arquivos</p>
-          </div>
-        </div>
-      </div>
-      <div class="section-divider"></div>
-    </section>
+      <section id="about" class="about">
+        <div class="container">
+          <h2 class="section-title">Sobre</h2>
 
-    <section id="ai-analysis" class="ai-analysis">
-      <div class="container">
-        <h2 class="section-title">Análise IA</h2>
-        
-        <div class="ai-features">
-          <div class="ai-feature-card" data-scroll-animate>
-            <i class="ph ph-currency-circle-dollar"></i>
-            <h3>Verificação de valores monetários</h3>
-            <p>Registros, escrituras, procurações, inventários, certidões e outros documentos</p>
+          <div class="about-intro">
+            <p>
+              A GiseLi faz parte de um ecossistema de soluções tecnológicas que
+              visa aprimorar o serviço extrajudicial no Estado do Tocantins.
+              Conheça abaixo as instituições e sistemas que integram esse
+              projeto inovador.
+            </p>
           </div>
-          
-          <div class="ai-feature-card coming-soon" data-scroll-animate>
-            <i class="ph ph-timer"></i>
-            <h3>Em breve</h3>
-            <ul>
-              <li>Natureza do ato: gratuito ou onerado</li>
-              <li>Análise de dados de imóveis que impactam o valor final de emolumentos, repasses e tributos</li>
-              <li>Integração com outros interessados para comparação de informações</li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="workflow" data-scroll-animate>
-          <h3>Como funciona?</h3>
-          <div class="workflow-container">
-            <div class="workflow-step">
-              <div class="step-icon">
-                <i class="ph ph-file-text"></i>
+
+          <div class="about-carousel">
+            <div class="carousel-container">
+              <div class="carousel-track">
+                <div class="carousel-slide active" data-index="0">
+                  <div class="about-card" data-scroll-animate>
+                    <div class="about-card-image">
+                      <img
+                        src="https://www.tjto.jus.br/images/tema/tjto_logo_horizontal_branco.svg"
+                        alt="TJTO"
+                      />
+                    </div>
+                    <div class="about-card-content">
+                      <h3>TJTO</h3>
+                      <p>
+                        O Tribunal de Justiça do Estado do Tocantins é a
+                        instância mais alta do Poder Judiciário tocantinense e
+                        tem por missão garantir a cidadania através da
+                        distribuição de uma justiça célere, segura e eficaz.
+                      </p>
+                      <a
+                        href="https://www.tjto.jus.br/institucional/conheca-o-tjto"
+                        target="_blank"
+                        class="link-arrow"
+                      >
+                        Saiba mais sobre o TJTO
+                        <i class="ph ph-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="carousel-slide" data-index="1">
+                  <div class="about-card" data-scroll-animate>
+                    <div class="about-card-image">
+                      <img
+                        src="https://corregedoria.tjto.jus.br/images/tema/logo_corregedoria.svg"
+                        alt="CGJUS"
+                      />
+                    </div>
+                    <div class="about-card-content">
+                      <h3>CGJUS</h3>
+                      <p>
+                        A Corregedoria-Geral da Justiça do Estado do Tocantins,
+                        órgão integrante do Poder Judiciário, tem suas
+                        atribuições regulamentadas por leis e resoluções, e suas
+                        atividades são voltadas ao controle, orientação e
+                        fiscalização dos serviços judiciais e extrajudiciais
+                        prestados no âmbito do Estado do Tocantins.
+                      </p>
+                      <a
+                        href="https://corregedoria.tjto.jus.br/institucional/sobre-a-corregedoria"
+                        target="_blank"
+                        class="link-arrow"
+                      >
+                        Saiba mais sobre a CGJUS
+                        <i class="ph ph-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="carousel-slide" data-index="2">
+                  <div class="about-card" data-scroll-animate>
+                    <div class="about-card-image">
+                      <img src="gise_branco_c_texto.png" alt="GISE" />
+                    </div>
+                    <div class="about-card-content">
+                      <h3>GISE</h3>
+                      <p>
+                        O Sistema GISE (Sistema de Gestão Integrada das
+                        Serventias Extrajudiciais) é uma ferramenta eletrônica
+                        de acompanhamento dos atos praticados pelas serventias
+                        extrajudiciais (cartórios) do Estado do Tocantins,
+                        interligando-as à Corregedoria-Geral da Justiça do
+                        Estado do Tocantins.
+                      </p>
+                      <p>
+                        Instituído pela "Resolução Nº 13, de 19 de setembro de
+                        2011", o GISE tem o papel de centralizar as informações
+                        extrajudiciais a fim de prover os recursos tecnológicos
+                        necessários para que a CGJUS exerça sua missão.
+                      </p>
+                      <a
+                        href="https://wwa.tjto.jus.br/elegis/Home/Imprimir/377"
+                        target="_blank"
+                        class="link-arrow"
+                      >
+                        Leia a Resolução Nº 13
+                        <i class="ph ph-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="carousel-slide" data-index="3">
+                  <div class="about-card" data-scroll-animate>
+                    <div class="about-card-image">
+                      <img src="giseli_branco_c_texto.png" alt="GiseLI" />
+                    </div>
+                    <div class="about-card-content">
+                      <h3>GiseLI</h3>
+                      <p>
+                        GiseLI (Sistema de Gestão Integrada das Serventias
+                        Extrajudiciais com Linguagem Inteligente) é a
+                        Inteligência Artificial Extrajudicial do Tocantins que
+                        permite a análise em larga escala dos atos praticados na
+                        prestação jurisdicional extrajudicial do estado.
+                      </p>
+                      <p>
+                        Parte dessa análise se dará nas Correições
+                        Extrajudiciais, que outrora eram Físicas e Presenciais.
+                        A GiseLI nos permitirá alcançar a Correição Inteligente
+                        através do uso de LLM que identificará possíveis
+                        discrepâncias nos atos extrajudiciais.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <p>Ato Extrajudicial</p>
             </div>
-            
-            <div class="workflow-arrow">
-              <i class="ph ph-arrow-right"></i>
-            </div>
-            
-            <div class="workflow-step">
-              <div class="step-icon giseli-icon">
-                <img src="Logo_giseli_transparente.png" alt="GiseLi">
+
+            <div class="carousel-controls">
+              <button class="carousel-control prev" aria-label="Anterior">
+                <i class="ph ph-caret-left"></i>
+              </button>
+              <div class="carousel-indicators">
+                <button
+                  class="indicator active"
+                  data-index="0"
+                  aria-label="Grupo 1"
+                ></button>
+                <button
+                  class="indicator"
+                  data-index="2"
+                  aria-label="Grupo 2"
+                ></button>
               </div>
-              <p>GiseLI</p>
+              <button class="carousel-control next" aria-label="Próximo">
+                <i class="ph ph-caret-right"></i>
+              </button>
             </div>
-            
-            <div class="workflow-arrow">
-              <i class="ph ph-arrow-right"></i>
+          </div>
+        </div>
+      </section>
+
+      <section id="statistics" class="statistics">
+        <div class="container">
+          <h2 class="section-title">Estatísticas</h2>
+
+          <div class="stats-container">
+            <div class="stat-card" data-scroll-animate>
+              <i class="ph ph-calendar"></i>
+              <h3>14</h3>
+              <p>anos de dados recebidos</p>
             </div>
-            
-            <div class="workflow-step">
-              <div class="step-icon">
-                <i class="ph ph-check-circle"></i>
+
+            <div class="stat-card" data-scroll-animate>
+              <i class="ph ph-buildings"></i>
+              <h3>239</h3>
+              <p>cartórios ativos</p>
+            </div>
+
+            <div class="stat-card" data-scroll-animate>
+              <i class="ph ph-file-text"></i>
+              <h3>68</h3>
+              <p>milhões de atos realizados</p>
+            </div>
+
+            <div class="stat-card" data-scroll-animate>
+              <i class="ph ph-files"></i>
+              <h3>2.5</h3>
+              <p>milhões de arquivos</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ai-analysis" class="ai-analysis">
+        <div class="container">
+          <h2 class="section-title">Análise IA</h2>
+
+          <div class="ai-analysis-intro">
+            <p>
+              A GiseLI utiliza tecnologia avançada para analisar documentos
+              extrajudiciais, identificando possíveis discrepâncias e garantindo
+              a integridade dos atos.
+            </p>
+          </div>
+
+          <div class="ai-features">
+            <div class="ai-feature-card" data-scroll-animate>
+              <div class="feature-icon-wrapper">
+                <i class="ph ph-currency-circle-dollar"></i>
               </div>
-              <p>Ato com divergência ou com integridade</p>
+              <div class="feature-content">
+                <h3>Verificação de valores monetários</h3>
+                <p>
+                  Análise inteligente de valores em registros, escrituras,
+                  procurações, inventários, certidões e outros documentos
+                  extrajudiciais.
+                </p>
+              </div>
+            </div>
+
+            <div class="ai-feature-card" data-scroll-animate>
+              <div class="feature-icon-wrapper">
+                <i class="ph ph-magnifying-glass-plus"></i>
+              </div>
+              <div class="feature-content">
+                <h3>Detecção de inconsistências</h3>
+                <p>
+                  Identificação automática de discrepâncias e inconsistências em
+                  documentos, garantindo maior precisão nos atos extrajudiciais.
+                </p>
+              </div>
+            </div>
+
+            <div class="ai-feature-card coming-soon" data-scroll-animate>
+              <div class="feature-icon-wrapper">
+                <i class="ph ph-timer"></i>
+                <span class="coming-soon-badge">Em breve</span>
+              </div>
+              <div class="feature-content">
+                <h3>Recursos futuros</h3>
+                <ul>
+                  <li>
+                    <i class="ph ph-check-circle-thin"></i> Natureza do ato:
+                    gratuito ou onerado
+                  </li>
+                  <li>
+                    <i class="ph ph-check-circle-thin"></i> Análise de dados de
+                    imóveis que impactam o valor final de emolumentos, repasses
+                    e tributos
+                  </li>
+                  <li>
+                    <i class="ph ph-check-circle-thin"></i> Integração com
+                    outros interessados para comparação de informações
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="workflow" data-scroll-animate>
+            <h3>Como funciona?</h3>
+            <div class="workflow-container">
+              <div class="workflow-step">
+                <div class="step-icon">
+                  <i class="ph ph-file-text"></i>
+                </div>
+                <div class="step-content">
+                  <h4>1. Ato Extrajudicial</h4>
+                  <p>Documento é enviado ao sistema</p>
+                </div>
+              </div>
+
+              <div class="workflow-arrow">
+                <i class="ph ph-arrow-right"></i>
+              </div>
+
+              <div class="workflow-step highlight">
+                <div class="step-icon giseli-icon">
+                  <img src="Logo_giseli_transparente.png" alt="GiseLi" />
+                </div>
+                <div class="step-content">
+                  <h4>2. Processamento GiseLI</h4>
+                  <p>Análise inteligente dos dados</p>
+                </div>
+              </div>
+
+              <div class="workflow-arrow">
+                <i class="ph ph-arrow-right"></i>
+              </div>
+
+              <div class="workflow-step">
+                <div class="step-icon">
+                  <i class="ph ph-check-circle"></i>
+                </div>
+                <div class="step-content">
+                  <h4>3. Resultado</h4>
+                  <p>
+                    Identificação de divergências ou confirmação de integridade
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-benefits">
+            <div class="benefit-card" data-scroll-animate>
+              <i class="ph ph-lightning"></i>
+              <h4>Análise Rápida</h4>
+              <p>Processamento eficiente de grandes volumes de documentos</p>
+            </div>
+
+            <div class="benefit-card" data-scroll-animate>
+              <i class="ph ph-trend-up"></i>
+              <h4>Alta Precisão</h4>
+              <p>Detecção de inconsistências com elevado grau de acurácia</p>
+            </div>
+
+            <div class="benefit-card" data-scroll-animate>
+              <i class="ph ph-scales"></i>
+              <h4>Maior Segurança</h4>
+              <p>
+                Garantia de conformidade e integridade nos atos extrajudiciais
+              </p>
             </div>
           </div>
         </div>
-      </div>
-      <div class="section-divider"></div>
-    </section>
+      </section>
 
-    <section id="future-impact" class="future-impact">
-      <div class="container">
-        <h2 class="section-title">Impacto Futuro</h2>
-        
-        <div class="impact-grid">
-          <div class="impact-card" data-scroll-animate>
-            <i class="ph ph-eye"></i>
-            <h3>Fiscalização</h3>
-            <p>A equipe correcional foca em decisões maiores e melhores</p>
-          </div>
-          
-          <div class="impact-card" data-scroll-animate>
-            <i class="ph ph-list-checks"></i>
-            <h3>Padronização</h3>
-            <p>Atos padronizados e mais claros à medida que as análises são realizadas</p>
-          </div>
-          
-          <div class="impact-card" data-scroll-animate>
-            <i class="ph ph-robot"></i>
-            <h3>Automação</h3>
-            <p>Tarefas repetitivas do serviço extrajudicial resolvidas rapidamente</p>
-          </div>
-          
-          <div class="impact-card" data-scroll-animate>
-            <i class="ph ph-leaf"></i>
-            <h3>Sustentabilidade</h3>
-            <p>Redução de gastos com papel físico, diárias e deslocamentos</p>
-          </div>
-        </div>
-      </div>
-      <div class="section-divider"></div>
-    </section>
+      <section id="future-impact" class="future-impact">
+        <div class="container">
+          <h2 class="section-title">Impacto Futuro</h2>
 
-    <section id="other-tools" class="other-tools">
-      <div class="container">
-        <h2 class="section-title">Outras Ferramentas</h2>
-        
-        <div class="tools-grid">
-          <a href="https://gise.tjto.jus.br" target="_blank" class="tool-card" data-scroll-animate>
-            <div class="tool-logo">
-              <img src="gise_branco_c_texto.png" alt="GISE">
+          <div class="future-intro">
+            <p>
+              A GiseLI proporciona diversos benefícios ao serviço extrajudicial,
+              otimizando processos e garantindo maior precisão nas análises
+              realizadas.
+            </p>
+          </div>
+
+          <div class="impact-grid">
+            <div class="impact-card" data-scroll-animate>
+              <div class="impact-icon">
+                <i class="ph ph-eye"></i>
+              </div>
+              <div class="impact-content">
+                <h3>Fiscalização</h3>
+                <p>
+                  A equipe correcional foca em decisões estratégicas e de maior
+                  impacto, com análises mais profundas e eficientes.
+                </p>
+                <div class="impact-meter">
+                  <div class="meter-fill" style="width: 85%"></div>
+                  <span class="meter-value">85%</span>
+                  <span class="meter-label">mais eficiente</span>
+                </div>
+              </div>
             </div>
-            <h3>GISE</h3>
-            <p>gise.tjto.jus.br</p>
-          </a>
-          
-          <a href="https://gise.tjto.jus.br/Gise/qr" target="_blank" class="tool-card" data-scroll-animate>
-            <i class="ph ph-magnifying-glass"></i>
-            <h3>Consulta Pública</h3>
-            <p>gise.tjto.jus.br/Gise/qr</p>
-          </a>
-          
-          <a href="https://selodigital.tjto.jus.br" target="_blank" class="tool-card" data-scroll-animate>
-            <div class="tool-logo">
-              <img src="selodigital.png" alt="Selo Digital">
+
+            <div class="impact-card" data-scroll-animate>
+              <div class="impact-icon">
+                <i class="ph ph-list-checks"></i>
+              </div>
+              <div class="impact-content">
+                <h3>Padronização</h3>
+                <p>
+                  Atos padronizados e mais claros à medida que as análises são
+                  realizadas, garantindo uniformidade nos processos
+                  extrajudiciais.
+                </p>
+                <div class="impact-meter">
+                  <div class="meter-fill" style="width: 78%"></div>
+                  <span class="meter-value">78%</span>
+                  <span class="meter-label">mais consistente</span>
+                </div>
+              </div>
             </div>
-            <h3>Aplicativo Selo Digital</h3>
-            <p>selodigital.tjto.jus.br</p>
-          </a>
-          
-          <a href="https://corregedoria.tjto.jus.br" target="_blank" class="tool-card" data-scroll-animate>
-            <i class="ph ph-scales"></i>
-            <h3>Corregedoria</h3>
-            <p>corregedoria.tjto.jus.br</p>
-          </a>
-        </div>
-      </div>
-      <div class="section-divider"></div>
-    </section>
 
-    <section id="contact" class="contact">
+            <div class="impact-card" data-scroll-animate>
+              <div class="impact-icon">
+                <i class="ph ph-robot"></i>
+              </div>
+              <div class="impact-content">
+                <h3>Automação</h3>
+                <p>
+                  Tarefas repetitivas do serviço extrajudicial resolvidas
+                  rapidamente, liberando recursos humanos para atividades mais
+                  complexas.
+                </p>
+                <div class="impact-meter">
+                  <div class="meter-fill" style="width: 92%"></div>
+                  <span class="meter-value">92%</span>
+                  <span class="meter-label">mais rápido</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="impact-card" data-scroll-animate>
+              <div class="impact-icon">
+                <i class="ph ph-leaf"></i>
+              </div>
+              <div class="impact-content">
+                <h3>Sustentabilidade</h3>
+                <p>
+                  Redução significativa de gastos com papel físico, diárias e
+                  deslocamentos, contribuindo para um serviço mais sustentável e
+                  econômico.
+                </p>
+                <div class="impact-meter">
+                  <div class="meter-fill" style="width: 65%"></div>
+                  <span class="meter-value">65%</span>
+                  <span class="meter-label">menos recursos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="future-cta">
+            <h3>O futuro dos serviços extrajudiciais</h3>
+            <p>
+              A transformação digital com inteligência artificial está apenas
+              começando. Acompanhe o desenvolvimento de novas funcionalidades da
+              GiseLI e seja parte dessa evolução.
+            </p>
+            <div class="tech-icons">
+              <span class="tech-icon"><i class="ph ph-brain"></i></span>
+              <span class="tech-icon"><i class="ph ph-chart-line-up"></i></span>
+              <span class="tech-icon"><i class="ph ph-database"></i></span>
+              <span class="tech-icon"><i class="ph ph-cloud"></i></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="other-tools" class="other-tools">
+        <div class="container">
+          <h2 class="section-title">Outras Ferramentas</h2>
+          
+          <div class="tools-intro">
+            <p>Conheça as outras ferramentas disponíveis do ecossistema GISE que auxiliam na gestão dos serviços extrajudiciais.</p>
+          </div>
+
+          <div class="tools-grid">
+            <a
+              href="https://gise.tjto.jus.br"
+              target="_blank"
+              class="tool-card"
+              data-scroll-animate
+            >
+              <div class="tool-logo">
+                <img src="gise_branco_c_texto.png" alt="GISE" />
+                <div class="tool-glow"></div>
+              </div>
+              <h3>GISE</h3>
+              <p>Sistema de Gestão Integrada das Serventias Extrajudiciais</p>
+              <span class="tool-link">gise.tjto.jus.br <i class="ph ph-arrow-right"></i></span>
+            </a>
+
+            <a
+              href="https://gise.tjto.jus.br/Gise/qr"
+              target="_blank"
+              class="tool-card"
+              data-scroll-animate
+            >
+              <i class="ph ph-magnifying-glass"></i>
+              <div class="tool-glow"></div>
+              <h3>Consulta Pública</h3>
+              <p>Acesse informações sobre atos extrajudiciais e valide certidões</p>
+              <span class="tool-link">gise.tjto.jus.br/Gise/qr <i class="ph ph-arrow-right"></i></span>
+            </a>
+
+            <a
+              href="https://selodigital.tjto.jus.br"
+              target="_blank"
+              class="tool-card"
+              data-scroll-animate
+            >
+              <div class="tool-logo">
+                <img src="selodigital.png" alt="Selo Digital" />
+                <div class="tool-glow"></div>
+              </div>
+              <h3>Aplicativo Selo Digital</h3>
+              <p>Plataforma de gestão e validação de selos digitais</p>
+              <span class="tool-link">selodigital.tjto.jus.br <i class="ph ph-arrow-right"></i></span>
+            </a>
+
+            <a
+              href="https://corregedoria.tjto.jus.br"
+              target="_blank"
+              class="tool-card"
+              data-scroll-animate
+            >
+              <i class="ph ph-scales"></i>
+              <div class="tool-glow"></div>
+              <h3>Corregedoria</h3>
+              <p>Portal da Corregedoria-Geral da Justiça do Tocantins</p>
+              <span class="tool-link">corregedoria.tjto.jus.br <i class="ph ph-arrow-right"></i></span>
+            </a>
+          </div>
+          
+          <div class="floating-particles">
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="container">
+          <h2 class="section-title">Contato</h2>
+          
+          <div class="contact-intro">
+            <p>Entre em contato com nossa equipe para mais informações sobre a GiseLi e o ecossistema de serviços extrajudiciais.</p>
+          </div>
+
+          <div class="contact-info">
+            <a
+              href="#"
+              id="email-link"
+              class="contact-item"
+              data-scroll-animate
+            >
+              <div class="contact-icon">
+                <i class="ph ph-envelope-simple"></i>
+              </div>
+              <div class="contact-text">
+                <h3>Email</h3>
+              </div>
+            </a>
+
+            <a
+              href="#"
+              id="instagram-link"
+              target="_blank"
+              class="contact-item"
+              data-scroll-animate
+            >
+              <div class="contact-icon">
+                <i class="ph ph-instagram-logo"></i>
+              </div>
+              <div class="contact-text">
+                <h3>Instagram</h3>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
       <div class="container">
-        <h2 class="section-title">Contato</h2>
-        
-        <div class="contact-info">
-          <a href="mailto:giseli.ia@tjto.jus.br" class="contact-item" data-scroll-animate>
-            <i class="ph ph-envelope"></i>
-            <span>giseli.ia@tjto.jus.br</span>
-          </a>
-          
-          <a href="https://instagram.com/giseli.ia" target="_blank" class="contact-item" data-scroll-animate>
-            <i class="ph ph-instagram-logo"></i>
-            <span>@giseli.ia</span>
-          </a>
+        <div class="footer-content">
+          <div class="footer-logo">
+            <img src="giseli_branco_c_texto.png" alt="GiseLi Logo" />
+          </div>
+          <div class="footer-info">
+            <p>
+              &copy; 2025 GiseLi - Sistema de Gestão Integrada das Serventias
+              Extrajudiciais com Linguagem Inteligente
+            </p>
+            <p>Tribunal de Justiça do Estado do Tocantins</p>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <img src="giseli_branco_c_texto.png" alt="GiseLi Logo">
-        </div>
-        <div class="footer-info">
-          <p>&copy; 2025 GiseLi - Sistema de Gestão Integrada das Serventias Extrajudiciais com Linguagem Inteligente</p>
-          <p>Tribunal de Justiça do Estado do Tocantins</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+    <script src="script.js"></script>
+    <script>
+      // Galaxy animation
+      const galaxyCanvas = document.getElementById("galaxy-canvas");
+      const ctx = galaxyCanvas.getContext("2d");
 
-  <script src="script.js"></script>
-  <script>
-    // Galaxy animation
-    const galaxyCanvas = document.getElementById('galaxy-canvas');
-    const ctx = galaxyCanvas.getContext('2d');
-    
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    
-    // Set canvas dimensions
-    function resizeCanvas() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      galaxyCanvas.width = width;
-      galaxyCanvas.height = height;
-    }
-    
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    
-    // Galaxy stars
-    class Star {
-      constructor() {
-        this.reset();
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+
+      // Set canvas dimensions
+      function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        galaxyCanvas.width = width;
+        galaxyCanvas.height = height;
       }
-      
-      reset() {
-        this.x = Math.random() * width - width / 2;
-        this.y = Math.random() * height - height / 2;
-        this.z = Math.random() * 1000;
-        this.size = 1.2;
-        this.opacity = Math.random();
-        this.color = this.getColor();
-      }
-      
-      getColor() {
-        const colors = [
-          [250, 186, 99],  // Accent color (faba63)
-          [255, 255, 255], // White
-          [79, 133, 229],  // Light blue
-          [3, 42, 95]      // Primary color
-        ];
-        
-        const idx = Math.floor(Math.random() * colors.length);
-        return colors[idx];
-      }
-      
-      update() {
-        // Move toward viewer
-        this.z -= 1;
-        
-        // If star passes viewer, reset its position
-        if (this.z <= 0) {
+
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+
+      // Galaxy stars
+      class Star {
+        constructor() {
           this.reset();
         }
-      }
-      
-      draw() {
-        // Convert 3D coordinates to 2D
-        const factor = 500 / this.z;
-        const x = this.x * factor + width / 2;
-        const y = this.y * factor + height / 2;
-        
-        // Calculate size based on depth
-        const sizeFactor = Math.max(0.1, 500 / this.z);
-        const finalSize = this.size * sizeFactor;
-        
-        // Skip if outside of viewport
-        if (x < 0 || x > width || y < 0 || y > height) {
-          return;
+
+        reset() {
+          this.x = Math.random() * width - width / 2;
+          this.y = Math.random() * height - height / 2;
+          this.z = Math.random() * 1000;
+          this.size = 1.2;
+          this.opacity = Math.random();
+          this.color = this.getColor();
         }
-        
-        // Draw star
-        const [r, g, b] = this.color;
-        const fadeStart = 400;
-        const fadeEnd = 0;
-        let opacity = this.opacity;
-        
-        // Fade out as stars come closer
-        if (this.z < fadeStart) {
-          opacity = this.opacity * ((this.z - fadeEnd) / (fadeStart - fadeEnd));
+
+        getColor() {
+          const colors = [
+            [250, 186, 99], // Accent color (faba63)
+            [255, 255, 255], // White
+            [79, 133, 229], // Light blue
+            [3, 42, 95], // Primary color
+          ];
+
+          const idx = Math.floor(Math.random() * colors.length);
+          return colors[idx];
         }
-        
-        // Add glow for closer stars
-        if (this.z < 200) {
-          const glowSize = (1 - this.z / 200) * 20 * finalSize;
-          
-          // Outer glow
-          const gradient = ctx.createRadialGradient(
-            x, y, finalSize / 2,
-            x, y, glowSize
-          );
-          
-          gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${opacity})`);
-          gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
-          
-          ctx.fillStyle = gradient;
+
+        update() {
+          // Move toward viewer
+          this.z -= 1;
+
+          // If star passes viewer, reset its position
+          if (this.z <= 0) {
+            this.reset();
+          }
+        }
+
+        draw() {
+          // Convert 3D coordinates to 2D
+          const factor = 500 / this.z;
+          const x = this.x * factor + width / 2;
+          const y = this.y * factor + height / 2;
+
+          // Calculate size based on depth
+          const sizeFactor = Math.max(0.1, 500 / this.z);
+          const finalSize = this.size * sizeFactor;
+
+          // Skip if outside of viewport
+          if (x < 0 || x > width || y < 0 || y > height) {
+            return;
+          }
+
+          // Draw star
+          const [r, g, b] = this.color;
+          const fadeStart = 400;
+          const fadeEnd = 0;
+          let opacity = this.opacity;
+
+          // Fade out as stars come closer
+          if (this.z < fadeStart) {
+            opacity =
+              this.opacity * ((this.z - fadeEnd) / (fadeStart - fadeEnd));
+          }
+
+          // Add glow for closer stars
+          if (this.z < 200) {
+            const glowSize = (1 - this.z / 200) * 20 * finalSize;
+
+            // Outer glow
+            const gradient = ctx.createRadialGradient(
+              x,
+              y,
+              finalSize / 2,
+              x,
+              y,
+              glowSize
+            );
+
+            gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${opacity})`);
+            gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(x, y, glowSize, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Core of star
+          ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`;
           ctx.beginPath();
-          ctx.arc(x, y, glowSize, 0, Math.PI * 2);
+          ctx.arc(x, y, finalSize, 0, Math.PI * 2);
           ctx.fill();
         }
-        
-        // Core of star
-        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`;
-        ctx.beginPath();
-        ctx.arc(x, y, finalSize, 0, Math.PI * 2);
-        ctx.fill();
       }
-    }
-    
-    // Galaxy nebula clouds
-    class Nebula {
-      constructor() {
-        this.generateCloud();
-      }
-      
-      generateCloud() {
-        this.x = (Math.random() - 0.5) * width * 1.5;
-        this.y = (Math.random() - 0.5) * height * 1.5;
-        this.z = Math.random() * 1000 + 500;
-        this.size = Math.random() * 200 + 100;
-        this.opacity = Math.random() * 0.05 + 0.025;
-        
-        // Color variations
-        const hue = Math.random() < 0.5 ? 
-          Math.random() * 20 + 30 : // Golden (accent color)
-          Math.random() * 30 + 210; // Blue (primary color)
-        
-        this.color = `hsla(${hue}, 80%, 60%, ${this.opacity})`;
-      }
-      
-      update() {
-        // Slowly move toward viewer
-        this.z -= 0.1;
-        
-        // Regenerate when too close
-        if (this.z < 0) {
+
+      // Galaxy nebula clouds
+      class Nebula {
+        constructor() {
           this.generateCloud();
         }
-      }
-      
-      draw() {
-        const factor = 500 / this.z;
-        const x = this.x * factor + width / 2;
-        const y = this.y * factor + height / 2;
-        const size = this.size * factor;
-        
-        // Skip if too far out of viewport
-        if (x < -size || x > width + size || y < -size || y > height + size) {
-          return;
+
+        generateCloud() {
+          this.x = (Math.random() - 0.5) * width * 1.5;
+          this.y = (Math.random() - 0.5) * height * 1.5;
+          this.z = Math.random() * 1000 + 500;
+          this.size = Math.random() * 200 + 100;
+          this.opacity = Math.random() * 0.05 + 0.025;
+
+          // Color variations
+          const hue =
+            Math.random() < 0.5
+              ? Math.random() * 20 + 30 // Golden (accent color)
+              : Math.random() * 30 + 210; // Blue (primary color)
+
+          this.color = `hsla(${hue}, 80%, 60%, ${this.opacity})`;
         }
-        
-        ctx.beginPath();
-        ctx.ellipse(x, y, size, size * 0.6, Math.random() * Math.PI, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.filter = 'blur(20px)';
-        ctx.fill();
-        ctx.filter = 'none';
+
+        update() {
+          // Slowly move toward viewer
+          this.z -= 0.1;
+
+          // Regenerate when too close
+          if (this.z < 0) {
+            this.generateCloud();
+          }
+        }
+
+        draw() {
+          const factor = 500 / this.z;
+          const x = this.x * factor + width / 2;
+          const y = this.y * factor + height / 2;
+          const size = this.size * factor;
+
+          // Skip if too far out of viewport
+          if (x < -size || x > width + size || y < -size || y > height + size) {
+            return;
+          }
+
+          ctx.beginPath();
+          ctx.ellipse(
+            x,
+            y,
+            size,
+            size * 0.6,
+            Math.random() * Math.PI,
+            0,
+            Math.PI * 2
+          );
+          ctx.fillStyle = this.color;
+          ctx.filter = "blur(20px)";
+          ctx.fill();
+          ctx.filter = "none";
+        }
       }
-    }
-    
-    // Connecting neural-like lines between stars
-    function drawConnections(stars) {
-      const maxDistance = 150;
-      
-      ctx.strokeStyle = 'rgba(250, 186, 99, 0.1)';
-      ctx.lineWidth = 0.5;
-      
-      for (let i = 0; i < stars.length; i++) {
-        const star1 = stars[i];
-        
-        // Skip connections for distant stars
-        if (star1.z > 300) continue;
-        
-        const f1 = 500 / star1.z;
-        const x1 = star1.x * f1 + width / 2;
-        const y1 = star1.y * f1 + height / 2;
-        
-        for (let j = i + 1; j < stars.length; j++) {
-          const star2 = stars[j];
-          
+
+      // Connecting neural-like lines between stars
+      function drawConnections(stars) {
+        const maxDistance = 150;
+
+        ctx.strokeStyle = "rgba(250, 186, 99, 0.1)";
+        ctx.lineWidth = 0.5;
+
+        for (let i = 0; i < stars.length; i++) {
+          const star1 = stars[i];
+
           // Skip connections for distant stars
-          if (star2.z > 300) continue;
-          
-          const f2 = 500 / star2.z;
-          const x2 = star2.x * f2 + width / 2;
-          const y2 = star2.y * f2 + height / 2;
-          
-          const dx = x2 - x1;
-          const dy = y2 - y1;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          
-          if (distance < maxDistance) {
-            const opacity = 0.1 * (1 - distance / maxDistance);
-            ctx.strokeStyle = `rgba(250, 186, 99, ${opacity})`;
-            
-            ctx.beginPath();
-            ctx.moveTo(x1, y1);
-            ctx.lineTo(x2, y2);
-            ctx.stroke();
+          if (star1.z > 300) continue;
+
+          const f1 = 500 / star1.z;
+          const x1 = star1.x * f1 + width / 2;
+          const y1 = star1.y * f1 + height / 2;
+
+          for (let j = i + 1; j < stars.length; j++) {
+            const star2 = stars[j];
+
+            // Skip connections for distant stars
+            if (star2.z > 300) continue;
+
+            const f2 = 500 / star2.z;
+            const x2 = star2.x * f2 + width / 2;
+            const y2 = star2.y * f2 + height / 2;
+
+            const dx = x2 - x1;
+            const dy = y2 - y1;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < maxDistance) {
+              const opacity = 0.1 * (1 - distance / maxDistance);
+              ctx.strokeStyle = `rgba(250, 186, 99, ${opacity})`;
+
+              ctx.beginPath();
+              ctx.moveTo(x1, y1);
+              ctx.lineTo(x2, y2);
+              ctx.stroke();
+            }
           }
         }
       }
-    }
-    
-    // Create stars and nebulas
-    const stars = Array.from({ length: 1000 }, () => new Star());
-    const nebulas = Array.from({ length: 5 }, () => new Nebula());
-    
-    // Animation loop
-    function animateGalaxy() {
-      ctx.clearRect(0, 0, width, height);
-      
-      // Draw nebula clouds first (background)
-      nebulas.forEach(nebula => {
-        nebula.update();
-        nebula.draw();
-      });
-      
-      // Update and draw stars
-      stars.forEach(star => {
-        star.update();
-        star.draw();
-      });
-      
-      // Draw connections between stars
-      drawConnections(stars);
-      
-      requestAnimationFrame(animateGalaxy);
-    }
-    
-    // Start animation
-    animateGalaxy();
-  </script>
-</body>
+
+      // Create stars and nebulas
+      const stars = Array.from({ length: 1000 }, () => new Star());
+      const nebulas = Array.from({ length: 5 }, () => new Nebula());
+
+      // Animation loop
+      function animateGalaxy() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Draw nebula clouds first (background)
+        nebulas.forEach((nebula) => {
+          nebula.update();
+          nebula.draw();
+        });
+
+        // Update and draw stars
+        stars.forEach((star) => {
+          star.update();
+          star.draw();
+        });
+
+        // Draw connections between stars
+        drawConnections(stars);
+
+        requestAnimationFrame(animateGalaxy);
+      }
+
+      // Start animation
+      animateGalaxy();
+    </script>
+  </body>
 </html>
