@@ -106,12 +106,22 @@ p {
 }
 
 /* Carrossel de citações */
+.quotes-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  margin-bottom: 5rem; /* Aumentado espaçamento para os contatos */
+}
+
 .quotes-carousel {
   margin: 2rem 0;
   position: relative;
   width: 100%;
   max-width: 800px;
-  min-height: 160px;
+  min-height: 230px; /* Aumentada para acomodar citações maiores */
   z-index: 2;
 }
 
@@ -125,42 +135,36 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
 .quote-container.active {
   opacity: 1;
   transform: translateY(0);
+  position: relative;
 }
 
 .quote-text {
-  font-size: 1.6rem;
-  line-height: 1.5;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6;
   text-align: center;
   margin-bottom: 1rem;
   position: relative;
   color: #ffffff;
   font-style: italic;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+  padding: 0 1.5rem;
+  letter-spacing: 0.02em;
+  display: block;
+  overflow: visible;
 }
 
-.quote-text::before,
-.quote-text::after {
-  color: var(--accent-color);
-  font-size: 2.2rem;
-  position: relative;
-  line-height: 0;
-}
-
-.quote-text::before {
-  content: '\201C';
-  margin-right: 0.2rem;
-  vertical-align: -0.3rem;
-}
-
-.quote-text::after {
-  content: '\201D';
-  margin-left: 0.2rem;
-  vertical-align: -0.3rem;
+.quote-text span.quote-marks {
+  font-size: 2rem;
+  font-weight: 600;
+  font-family: 'Georgia', serif;
 }
 
 .quote-author {
@@ -411,6 +415,7 @@ p {
   gap: 2rem;
   position: relative;
   z-index: 2;
+  clear: both;
 }
 
 .contact-item {
@@ -469,13 +474,22 @@ p {
     padding: 0 0.5rem;
   }
 
+  .quotes-wrapper {
+    margin-bottom: 4rem;
+  }
+  
   .quotes-carousel {
-    min-height: 150px;
+    min-height: 210px;
     margin: 1.5rem 0;
+  }
+
+  .quote-container {
+    /* Removendo restrição de altura */
   }
 
   .quote-text {
     font-size: 1.3rem;
+    -webkit-line-clamp: 3;
   }
 
   .quote-author {
@@ -504,7 +518,7 @@ p {
   }
 
   .contacts {
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     margin-top: 2rem;
   }
@@ -550,6 +564,24 @@ p {
   .logo {
     width: 200px;
     margin-bottom: 1rem;
+  }
+
+  .quotes-wrapper {
+    margin-bottom: 3.5rem;
+  }
+  
+  .quotes-carousel {
+    min-height: 190px;
+    margin: 1rem 0;
+  }
+
+  .quote-container {
+    /* Removendo restrição de altura */
+  }
+
+  .quote-text {
+    font-size: 1.1rem;
+    padding: 0 1rem;
   }
 
   .terminal-effect {
@@ -617,5 +649,14 @@ p {
     margin-top: 1rem;
     order: 6;
     flex-direction: row;
+  }
+
+  .quotes-wrapper {
+    order: 5;
+    margin-bottom: 2.5rem;
+  }
+  
+  .quotes-carousel {
+    min-height: 150px;
   }
 }
