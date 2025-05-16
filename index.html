@@ -43,7 +43,7 @@
           <div class="hero-content animate-in">
             <span class="hero-subtitle">Inteligência Artificial Extrajudicial</span>
             <div class="hero-image animate-in">
-              <img src="giseli_branco_c_texto.png" alt="GiseLi Interface" />
+              <img src="/logos/brancas sem fundo/giseli_branco_c_texto.png" alt="GiseLi Interface" />
             </div>
             <p>Sistema de Gestão Integrada das Serventias Extrajudiciais com Linguagem Inteligente</p>
             <div class="scroll-indicator">
@@ -76,7 +76,7 @@
                   <div class="about-card">
                     <div class="about-card-image">
                       <div class="glow-effect"></div>
-                      <img src="gise_branco_c_texto.png" alt="GISE" />
+                      <img src="/logos/brancas sem fundo/gise_branco_c_texto.png" alt="GISE" />
                     </div>
                     <div class="about-card-content">
                       <h3>GISE</h3>
@@ -92,7 +92,7 @@
                   <div class="about-card">
                     <div class="about-card-image">
                       <div class="glow-effect"></div>
-                      <img src="giseli_branco_c_texto.png" alt="GiseLi" />
+                      <img src="/logos/brancas sem fundo/giseli_branco_c_texto.png" alt="GiseLi" />
                     </div>
                     <div class="about-card-content">
                       <h3>GiseLi</h3>
@@ -108,7 +108,7 @@
                   <div class="about-card">
                     <div class="about-card-image">
                       <div class="glow-effect"></div>
-                      <img src="selodigital_s_texto.png" alt="Selo Digital" />
+                      <img src="/logos/simbolos/simbolo_selo_branco.png" alt="Selo Digital" />
                     </div>
                     <div class="about-card-content">
                       <h3>Selo Digital</h3>
@@ -787,6 +787,35 @@
             menuToggle.classList.remove('active');
             navMenu.classList.remove('active');
           });
+        });
+      });
+    </script>
+
+    <!-- Botão Voltar ao Topo -->
+    <button id="back-to-top" aria-label="Voltar ao topo">
+      <i class="ph ph-arrow-up"></i>
+    </button>
+
+    <script>
+      // Controle do botão voltar ao topo
+      const backToTopButton = document.getElementById('back-to-top');
+      const aboutSection = document.getElementById('about');
+      
+      // Adicionar evento de scroll para mostrar/esconder o botão
+      window.addEventListener('scroll', function() {
+        // Verificar se o usuário passou da seção "about"
+        if (window.scrollY >= aboutSection.offsetTop) {
+          backToTopButton.classList.add('visible');
+        } else {
+          backToTopButton.classList.remove('visible');
+        }
+      });
+      
+      // Adicionar evento de clique para rolar para o topo
+      backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
         });
       });
     </script>
