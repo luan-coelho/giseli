@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 :root {
   --primary: #172947;
   --primary-light: #1c345e;
@@ -2557,7 +2557,6 @@ section.other-tools div.section-divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
   transition: all 0.5s ease;
   position: relative;
 }
@@ -2624,10 +2623,14 @@ section.other-tools div.section-divider {
   z-index: 0;
 }
 
-.tool-card:nth-child(1)::after { content: "01"; }
-.tool-card:nth-child(2)::after { content: "02"; }
-.tool-card:nth-child(3)::after { content: "03"; }
-.tool-card:nth-child(4)::after { content: "04"; }
+.tool-card h2 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  line-height: 1.2;
+}
 
 /* Enhanced responsive behavior */
 @media (max-width: 1200px) {
