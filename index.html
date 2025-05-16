@@ -11,6 +11,8 @@
       rel="stylesheet" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="about.css" />
+    <link rel="stylesheet" href="footer.css" />
   </head>
   <body>
     <header class="navbar">
@@ -72,7 +74,6 @@
           <div class="about-carousel">
             <div class="carousel-container">
               <div class="carousel-track">
-
                 <div class="carousel-slide">
                   <div class="about-card">
                     <div class="about-card-image">
@@ -138,7 +139,6 @@
                     </div>
                   </div>
                 </div>
-
               </div>
 
               <div class="carousel-controls">
@@ -351,7 +351,9 @@
                 </p>
               </div>
             </div>
+          </div>
 
+          <div class="impact-cards-container">
             <div class="impact-card" data-scroll-animate>
               <div class="impact-icon-container">
                 <i class="ph ph-robot"></i>
@@ -488,19 +490,72 @@
       </section>
     </main>
 
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-logo">
-            <img src="giseli_branco_c_texto.png" alt="GiseLi Logo" />
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <div class="footer-logo">
+                <img src="logos/brancas sem fundo/giseli_branco_c_texto.png" alt="GiseLi Logo" />
+              </div>
+              <p class="footer-tagline">
+                Sistema de Gestão Integrada das Serventias Extrajudiciais com Linguagem Inteligente
+              </p>
+            </div>
+
+            <div class="footer-links">
+              <h3>Links Rápidos</h3>
+              <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#statistics">Estatísticas</a></li>
+                <li><a href="#ai-analysis">Análise IA</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-links">
+              <h3>Sistemas</h3>
+              <ul>
+                <li><a href="https://gise.tjto.jus.br" target="_blank">GISE</a></li>
+                <li><a href="https://gise.tjto.jus.br/Gise/qr" target="_blank">Validação de Atos</a></li>
+                <li><a href="https://selodigital.tjto.jus.br" target="_blank">Selo Digital</a></li>
+                <li><a href="https://corregedoria.tjto.jus.br" target="_blank">Corregedoria</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-contact">
+              <h3>Contato</h3>
+              <div class="social-links">
+                <a href="#" aria-label="Email">
+                  <i class="ph ph-envelope-simple"></i>
+                </a>
+                <a href="#" aria-label="Instagram">
+                  <i class="ph ph-instagram-logo"></i>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                  <i class="ph ph-linkedin-logo"></i>
+                </a>
+                <a href="#" aria-label="YouTube">
+                  <i class="ph ph-youtube-logo"></i>
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="footer-info">
-            <p>
-              &copy; 2025 GiseLi - Sistema de Gestão Integrada das Serventias Extrajudiciais com Linguagem Inteligente
-            </p>
-            <p>Tribunal de Justiça do Estado do Tocantins</p>
+
+          <div class="footer-bottom">
+            <p class="copyright">&copy; 2025 GiseLi - Todos os direitos reservados</p>
+            <p class="institution">Tribunal de Justiça do Estado do Tocantins</p>
           </div>
         </div>
+      </div>
+
+      <div class="footer-particles">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </footer>
 
@@ -737,24 +792,24 @@
       animateGalaxy()
     </script>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('nav ul');
-        
-        menuToggle.addEventListener('click', function() {
-          menuToggle.classList.toggle('active');
-          navMenu.classList.toggle('active');
-        });
-        
+      document.addEventListener('DOMContentLoaded', function () {
+        const menuToggle = document.querySelector('.menu-toggle')
+        const navMenu = document.querySelector('nav ul')
+
+        menuToggle.addEventListener('click', function () {
+          menuToggle.classList.toggle('active')
+          navMenu.classList.toggle('active')
+        })
+
         // Close menu when a nav link is clicked
-        const navLinks = document.querySelectorAll('nav a');
+        const navLinks = document.querySelectorAll('nav a')
         navLinks.forEach(link => {
-          link.addEventListener('click', function() {
-            menuToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-          });
-        });
-      });
+          link.addEventListener('click', function () {
+            menuToggle.classList.remove('active')
+            navMenu.classList.remove('active')
+          })
+        })
+      })
     </script>
 
     <!-- Botão Voltar ao Topo -->
@@ -764,26 +819,26 @@
 
     <script>
       // Controle do botão voltar ao topo
-      const backToTopButton = document.getElementById('back-to-top');
-      const aboutSection = document.getElementById('about');
-      
+      const backToTopButton = document.getElementById('back-to-top')
+      const aboutSection = document.getElementById('about')
+
       // Adicionar evento de scroll para mostrar/esconder o botão
-      window.addEventListener('scroll', function() {
+      window.addEventListener('scroll', function () {
         // Verificar se o usuário passou da seção "about"
         if (window.scrollY >= aboutSection.offsetTop) {
-          backToTopButton.classList.add('visible');
+          backToTopButton.classList.add('visible')
         } else {
-          backToTopButton.classList.remove('visible');
+          backToTopButton.classList.remove('visible')
         }
-      });
-      
+      })
+
       // Adicionar evento de clique para rolar para o topo
-      backToTopButton.addEventListener('click', function() {
+      backToTopButton.addEventListener('click', function () {
         window.scrollTo({
           top: 0,
-          behavior: 'smooth'
-        });
-      });
+          behavior: 'smooth',
+        })
+      })
     </script>
   </body>
 </html>

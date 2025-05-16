@@ -130,9 +130,33 @@ function initSmoothScroll() {
 
 // Carousel functionality
 function initCarousel() {
+  // Check if screen is mobile (992px or less)
+  const isMobile = window.innerWidth <= 992;
+  
   const carouselContainers = document.querySelectorAll('.carousel-container');
   
   if (carouselContainers.length === 0) return;
+  
+  // Add responsive check for window resizing
+  window.addEventListener('resize', function() {
+    const newIsMobile = window.innerWidth <= 992;
+    
+    // If changed between mobile/desktop state, reload page to apply correct layout
+    if (newIsMobile !== isMobile) {
+      location.reload();
+    }
+  });
+  
+  // For mobile view, add active class to all slides and exit
+  if (isMobile) {
+    carouselContainers.forEach(container => {
+      const slides = container.querySelectorAll('.carousel-slide');
+      slides.forEach(slide => {
+        slide.classList.add('active');
+      });
+    });
+    return; // Skip carousel initialization on mobile
+  }
   
   carouselContainers.forEach(container => {
     const track = container.querySelector('.carousel-track');
