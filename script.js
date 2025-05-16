@@ -130,24 +130,47 @@ function initSmoothScroll() {
 
 // Carousel functionality
 function initCarousel() {
-  // Check if screen is mobile (992px or less)
-  const isMobile = window.innerWidth <= 992;
-  
   const carouselContainers = document.querySelectorAll('.carousel-container');
   
   if (carouselContainers.length === 0) return;
   
+  // Track window width for responsive behavior
+  let windowWidth = window.innerWidth;
+  
   // Add responsive check for window resizing
   window.addEventListener('resize', function() {
-    const newIsMobile = window.innerWidth <= 992;
+    const newWindowWidth = window.innerWidth;
     
-    // If changed between mobile/desktop state, reload page to apply correct layout
-    if (newIsMobile !== isMobile) {
+    // If we crossed a breakpoint, reload to apply correct layout
+    const oldBreakpoint = getBreakpointName(windowWidth);
+    const newBreakpoint = getBreakpointName(newWindowWidth);
+    
+    if (oldBreakpoint !== newBreakpoint) {
       location.reload();
     }
+    
+    windowWidth = newWindowWidth;
   });
   
-  // For mobile view, add active class to all slides and exit
+  // Helper to determine breakpoint name
+  function getBreakpointName(width) {
+    if (width <= 576) return 'xs';
+    if (width <= 768) return 'sm';
+    if (width <= 992) return 'md';
+    if (width <= 1200) return 'lg';
+    return 'xl';
+  }
+  
+  // Get number of visible cards based on screen size
+  function getVisibleCardCount() {
+    if (windowWidth <= 768) return 1;
+    if (windowWidth <= 992) return 2;
+    return 3;
+  }
+  
+  // For mobile view (768px or less), add active class to all slides for stacked view
+  const isMobile = windowWidth <= 768;
+  
   if (isMobile) {
     carouselContainers.forEach(container => {
       const slides = container.querySelectorAll('.carousel-slide');
@@ -224,23 +247,48 @@ function initCarousel() {
         slide.classList.remove('active', 'prev', 'next');
       });
       
+      const visibleCardCount = getVisibleCardCount();
+      
       // Set active slide
       allSlides[currentIndex].classList.add('active');
+      
+      // If we're showing multiple cards, mark adjacent slides as active too
+      if (visibleCardCount > 1) {
+        for (let i = 1; i < visibleCardCount; i++) {
+          const nextActiveIdx = (currentIndex + i) % allSlides.length;
+          allSlides[nextActiveIdx].classList.add('active');
+        }
+      }
       
       // Set previous slide
       const prevIndex = (currentIndex - 1 + allSlides.length) % allSlides.length;
       allSlides[prevIndex].classList.add('prev');
       
-      // Set next slide
-      const nextIndex = (currentIndex + 1) % allSlides.length;
+      // Set next slide (after all active slides)
+      const nextIndex = (currentIndex + visibleCardCount) % allSlides.length;
       allSlides[nextIndex].classList.add('next');
       
-      // Calculate translateX value to center the active slide
-      const slideWidth = 100 / 3; // 33.33% per slide
-      let translateX;
+      // Calculate translateX value to center the active slide(s)
+      let slideWidth;
       
-      // If we're at the beginning or end, we need special handling for smooth infinite loop
-      translateX = -currentIndex * slideWidth + (100 - slideWidth) / 2;
+      // Determine slide width based on screen size
+      if (windowWidth > 992) {
+        slideWidth = 100 / 3; // 33.33% per slide - 3 cards visible on large screens
+      } else if (windowWidth > 768) {
+        slideWidth = 50; // 50% per slide - 2 cards visible on medium screens
+      } else {
+        slideWidth = 100; // 100% per slide - 1 card visible on small screens
+      }
+      
+      // Calculate position to center the active slide(s)
+      let translateX = -currentIndex * slideWidth;
+      
+      // Adjust position for multiple visible cards to center them
+      if (visibleCardCount > 1) {
+        translateX = -currentIndex * slideWidth + (100 - (visibleCardCount * slideWidth)) / 2;
+      } else {
+        translateX = -currentIndex * slideWidth + (100 - slideWidth) / 2;
+      }
       
       // Apply transform
       track.style.transform = `translateX(${translateX}%)`;
