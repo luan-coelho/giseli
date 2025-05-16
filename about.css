@@ -3,7 +3,7 @@
   background: linear-gradient(135deg, var(--primary) 0%, #0a1528 100%);
   position: relative;
   overflow: hidden;
-  padding: 9rem 0;
+  padding: 5rem 0 0 0;
 }
 
 .about::before,
@@ -590,7 +590,7 @@
 .about-carousel {
   position: relative;
   width: 100%;
-  margin: 4rem auto;
+  margin: 2rem auto;
   overflow: hidden;
 }
 

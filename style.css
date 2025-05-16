@@ -2163,7 +2163,6 @@ section.section-transition-in .section-title::before {
   }
 }
 
-/* About Carousel */
 
 
 
@@ -2254,12 +2253,6 @@ section::after {
   background-color: transparent;
   z-index: 3;
 }
-
-/* Hero to About transition */
-
-
-/* About to Statistics transition */
-
 
 /* Statistics to AI-Analysis transition */
 .statistics::after {
