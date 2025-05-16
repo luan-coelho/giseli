@@ -444,7 +444,12 @@ function initImpactMeterAnimations() {
         const meterFill = entry.target.querySelector('.meter-fill');
         if (meterFill) {
           const width = meterFill.style.width;
-          meterFill.style.setProperty('--fill-width', width);
+          meterFill.style.setProperty('--width', width);
+          
+          // Aplica a largura com animação
+          setTimeout(() => {
+            meterFill.style.width = width;
+          }, 100);
         }
         
         // Para de observar após a animação
