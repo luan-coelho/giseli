@@ -1,0 +1,8 @@
+/* Importação dos arquivos CSS separados */
+@import 'common.css';
+@import 'navbar.css';
+@import 'home.css';
+@import 'statistics.css';
+@import 'ai-analysis.css';
+@import 'future-impact.css';
+@import 'other-tools.css';

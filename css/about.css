@@ -8,7 +8,7 @@
 
 .about::before,
 .about::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 200%;
   height: 200%;
@@ -30,22 +30,14 @@
 
 /* Add cosmic particles */
 .about::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(
-      circle at 25% 25%,
-      rgba(255, 187, 85, 0.05) 1px,
-      transparent 1px
-    ),
-    radial-gradient(
-      circle at 75% 75%,
-      rgba(255, 187, 85, 0.05) 1px,
-      transparent 1px
-    );
+  background-image: radial-gradient(circle at 25% 25%, rgba(255, 187, 85, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 187, 85, 0.05) 1px, transparent 1px);
   background-size: 30px 30px;
   z-index: 0;
   animation: twinkle 4s ease-in-out infinite alternate;
@@ -116,7 +108,7 @@
 
 .about-intro p::before,
 .about-intro p::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 40px;
   height: 3px;
@@ -146,11 +138,7 @@
 
 .about-card {
   position: relative;
-  background: linear-gradient(
-    145deg,
-    rgba(14, 33, 62, 0.8),
-    rgba(20, 50, 90, 0.8)
-  );
+  background: linear-gradient(145deg, rgba(14, 33, 62, 0.8), rgba(20, 50, 90, 0.8));
   border-radius: 20px;
   overflow: hidden;
   height: 450px;
@@ -165,24 +153,19 @@
 }
 
 .carousel-slide.active .about-card {
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2),
-    0 0 30px rgba(var(--accent-rgb), 0.2);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 0 30px rgba(var(--accent-rgb), 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transform: scale(1.05);
 }
 
 .about-card::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 187, 85, 0.1) 0%,
-    rgba(255, 187, 85, 0) 60%
-  );
+  background: linear-gradient(135deg, rgba(255, 187, 85, 0.1) 0%, rgba(255, 187, 85, 0) 60%);
   opacity: 0;
   transition: opacity 0.5s ease;
   z-index: 0;
@@ -204,41 +187,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    135deg,
-    rgba(14, 33, 62, 0.9) 0%,
-    rgba(10, 21, 40, 0.9) 100%
-  );
+  background: linear-gradient(135deg, rgba(14, 33, 62, 0.9) 0%, rgba(10, 21, 40, 0.9) 100%);
   position: relative;
 }
 
 .about-card-image::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 187, 85, 0.15) 0%,
-    rgba(255, 187, 85, 0) 70%
-  );
+  background: radial-gradient(circle at center, rgba(255, 187, 85, 0.15) 0%, rgba(255, 187, 85, 0) 70%);
   z-index: 1;
 }
 
 .about-card-image::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(10, 21, 40, 0.9) 100%
-  );
+  background: linear-gradient(to bottom, transparent 0%, rgba(10, 21, 40, 0.9) 100%);
   z-index: 2;
 }
 
@@ -287,18 +258,14 @@
 }
 
 .about-card h3::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -12px;
   left: 50%;
   width: 50px;
   height: 3px;
   transform: translateX(-50%);
-  background: linear-gradient(
-    90deg,
-    var(--accent) 0%,
-    rgba(255, 170, 51, 0.5) 100%
-  );
+  background: linear-gradient(90deg, var(--accent) 0%, rgba(255, 170, 51, 0.5) 100%);
   transition: width 0.5s ease;
 }
 
@@ -461,11 +428,11 @@
   .about-intro p::after {
     width: 30px;
   }
-  
+
   .about-intro p::before {
     transform: translateX(-60px);
   }
-  
+
   .about-intro p::after {
     transform: translateX(30px);
   }
@@ -505,58 +472,58 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .about-card {
     min-height: 350px;
     margin: 0 auto;
     max-width: 450px; /* Limit card width on mobile */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
+
   /* Add slight animation on scroll for better UX */
   .about-card {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInCard 0.5s forwards;
   }
-  
+
   .carousel-slide:nth-child(2) .about-card {
     animation-delay: 0.2s;
   }
-  
+
   .carousel-slide:nth-child(3) .about-card {
     animation-delay: 0.4s;
   }
-  
+
   .carousel-slide:nth-child(4) .about-card {
     animation-delay: 0.6s;
   }
-  
+
   @keyframes fadeInCard {
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  
+
   .about-card-content {
     padding: 1.5rem;
   }
-  
+
   .about-card h3 {
     font-size: 1.8rem;
     margin-bottom: 1.2rem;
   }
-  
+
   .about-card-content p {
     font-size: 1rem;
   }
-  
+
   .about-card-image {
     min-height: 120px;
     padding: 1rem;
   }
-  
+
   .about-card-image img {
     max-height: 60px; /* Control image height */
   }
@@ -648,11 +615,7 @@
 /* Cards do carrossel */
 .about-card {
   position: relative;
-  background: linear-gradient(
-    145deg,
-    rgba(14, 33, 62, 0.8),
-    rgba(20, 50, 90, 0.8)
-  );
+  background: linear-gradient(145deg, rgba(14, 33, 62, 0.8), rgba(20, 50, 90, 0.8));
   border-radius: 20px;
   overflow: hidden;
   height: 450px;
@@ -667,20 +630,19 @@
 }
 
 .carousel-slide.active .about-card {
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2),
-    0 0 30px rgba(var(--accent-rgb), 0.2);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 0 30px rgba(var(--accent-rgb), 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transform: scale(1.05);
 }
 
 .about-card::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxkZWZzPgogICAgPHBhdHRlcm4gaWQ9ImhleGFnb24iIHg9IjAiIHk9IjAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDMwKSI+CiAgICAgIDxwYXRoIGQ9Ik0xMCwwIEwzMCwwIEw0MCwxNyBMMzAsNDAgTDEwLDQwIEwwLDE3IFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjaGV4YWdvbikiPjwvcmVjdD4KPC9zdmc+")
+  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxkZWZzPgogICAgPHBhdHRlcm4gaWQ9ImhleGFnb24iIHg9IjAiIHk9IjAiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgcGF0dGVyblRyYW5zZm9ybT0icm90YXRlKDMwKSI+CiAgICAgIDxwYXRoIGQ9Ik0xMCwwIEwzMCwwIEw0MCwxNyBMMzAsNDAgTDEwLDQwIEwwLDE3IFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjAzKSIgc3Ryb2tlLXdpZHRoPSIxIj48L3BhdGg+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjaGV4YWdvbikiPjwvcmVjdD4KPC9zdmc+')
     repeat;
   opacity: 0.4;
   z-index: 0;
@@ -693,11 +655,7 @@
   transform: translate(-50%, -50%);
   width: 150%;
   height: 150%;
-  background: radial-gradient(
-    circle at center,
-    rgba(var(--accent-rgb), 0.3) 0%,
-    rgba(var(--accent-rgb), 0) 70%
-  );
+  background: radial-gradient(circle at center, rgba(var(--accent-rgb), 0.3) 0%, rgba(var(--accent-rgb), 0) 70%);
   opacity: 0;
   z-index: 1;
   transition: opacity 0.8s ease;
@@ -799,7 +757,7 @@
     width: 3rem;
     height: 3rem;
   }
-  
+
   .about-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -843,20 +801,20 @@
   .about-intro {
     margin: 0 auto 3rem;
   }
-  
+
   .about-intro p {
     padding: 0 2rem;
   }
-  
+
   .about-carousel {
     margin: 2rem auto;
   }
-  
+
   .carousel-container {
     padding: 1rem 0;
     perspective: none;
   }
-  
+
   .carousel-track {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -865,7 +823,7 @@
     transition: none;
     transform-style: flat;
   }
-  
+
   .carousel-slide {
     flex: unset;
     padding: 0;
@@ -875,36 +833,37 @@
     pointer-events: auto !important;
     width: 100%;
   }
-  
+
   .carousel-controls {
     display: none; /* Hide carousel controls on mobile */
   }
-  
+
   .about-card {
     height: auto;
     min-height: 380px;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
+
   /* Enhanced card hover effects for touch devices */
-  .about-card:hover, .about-card:active {
+  .about-card:hover,
+  .about-card:active {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   }
-  
+
   .about-card .glow-effect {
     opacity: 0.4; /* Keep glow visible by default */
   }
-  
+
   .about-card:hover .glow-effect {
     opacity: 0.8; /* Enhance glow on hover/touch */
   }
-  
+
   .about-card h3::after {
     width: 60px; /* Make line more visible */
   }
-  
+
   .about-card:hover h3::after {
     width: 100px;
     box-shadow: 0 0 10px rgba(255, 187, 85, 0.5);
@@ -915,36 +874,36 @@
   .about {
     padding: 6rem 0 4rem;
   }
-  
+
   .carousel-track {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .about-card {
     min-height: 350px;
     margin: 0 auto;
     max-width: 450px; /* Limit card width on mobile */
   }
-  
+
   .about-card-content {
     padding: 1.5rem;
   }
-  
+
   .about-card h3 {
     font-size: 1.8rem;
     margin-bottom: 1.2rem;
   }
-  
+
   .about-card-content p {
     font-size: 1rem;
   }
-  
+
   .about-card-image {
     min-height: 120px;
     padding: 1rem;
   }
-  
+
   .about-card-image img {
     max-height: 60px; /* Control image height */
   }
@@ -954,48 +913,48 @@
   .about {
     padding: 5rem 0 3rem;
   }
-  
+
   .about-intro {
     margin: 0 auto 2rem;
   }
-  
+
   .about-intro p {
     font-size: 1rem;
     line-height: 1.5;
     padding: 0;
   }
-  
+
   .about-intro p::before,
   .about-intro p::after {
     width: 25px;
     height: 2px;
   }
-  
+
   .about-intro p::before {
     transform: translateX(-40px);
   }
-  
+
   .about-intro p::after {
     transform: translateX(20px);
   }
-  
+
   .about-card {
     min-height: 320px;
   }
-  
+
   .about-card-image {
     min-height: 100px;
   }
-  
+
   .about-card h3 {
     font-size: 1.6rem;
     margin-bottom: 1rem;
   }
-  
+
   .about-card-content {
     padding: 1.2rem;
   }
-  
+
   .about-card-content p {
     font-size: 0.9rem;
     line-height: 1.6;
@@ -1010,7 +969,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-  
+
   .about-card {
     height: 380px;
     max-width: 400px;
@@ -1025,13 +984,13 @@
     justify-content: center;
     grid-template-columns: 1fr;
   }
-  
+
   .about-card {
     height: 350px;
     max-width: 350px;
     margin: 0 auto;
   }
-  
+
   /* Only show active slide on small screens */
   .carousel-slide:not(.active) {
     display: none;

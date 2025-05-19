@@ -1,0 +1,125 @@
+/* Statistics Section - Light Theme */
+.statistics {
+  background-color: #f8f9fa;
+  color: var(--primary);
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0;
+}
+
+.statistics::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: radial-gradient(circle at 25% 25%, rgba(3, 42, 95, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(250, 186, 99, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: 0;
+}
+
+.statistics .section-title {
+  color: var(--primary);
+  position: relative;
+  z-index: 1;
+}
+
+.statistics .section-title::after {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+.statistics .container {
+  position: relative;
+  z-index: 1;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.stat-card {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(3, 42, 95, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: linear-gradient(to bottom, var(--primary), var(--accent));
+  transition: height 0.6s ease;
+  border-radius: 4px 0 0 4px;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card:hover::before {
+  height: 100%;
+}
+
+.stat-card i {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover i {
+  color: var(--primary);
+  transform: scale(1.1);
+}
+
+.stat-card h3 {
+  font-size: 3.5rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--primary) 0%, #4986e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.stat-card p {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .stat-card {
+    padding: 1.5rem;
+  }
+
+  .stat-card h3 {
+    font-size: 3rem;
+  }
+
+  .stat-card p {
+    font-size: 1rem;
+  }
+
+  .stat-card i {
+    font-size: 2rem;
+  }
+}
