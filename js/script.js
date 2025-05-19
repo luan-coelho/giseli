@@ -646,3 +646,27 @@ function initContactLinks() {
     })
   }
 }
+
+// Scroll Animation
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to handle scroll animations
+  function handleScrollAnimations() {
+    const elements = document.querySelectorAll('[data-scroll-animate]');
+    
+    elements.forEach(element => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      
+      // When element is in viewport (with offset)
+      if (elementPosition < windowHeight - 100) {
+        element.classList.add('visible');
+      }
+    });
+  }
+  
+  // Initial check
+  handleScrollAnimations();
+  
+  // Add scroll event listener
+  window.addEventListener('scroll', handleScrollAnimations);
+});
