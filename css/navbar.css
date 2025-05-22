@@ -186,6 +186,17 @@ nav a.active::after {
   }
 }
 
+/* Botão flutuante de menu para mobile - escondido por padrão em todas as telas */
+.menu-float-button {
+  display: none;
+}
+
+@media (min-width: 577px) {
+  .menu-float-button {
+    display: none !important;
+  }
+}
+
 @media (max-width: 576px) {
   .navbar {
     padding: 1rem 1.5rem;
@@ -206,30 +217,69 @@ nav a.active::after {
     display: none;
   }
 
+  /* Botão flutuante de menu para mobile - mostrado apenas em telas pequenas */
+  .menu-float-button {
+    display: flex;
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(10, 21, 40, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .menu-float-button img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+  }
+
+  .menu-float-button.active {
+    background: var(--accent);
+  }
+
+  .menu-float-button.active img {
+    transform: rotate(45deg);
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
   nav {
     width: 100%;
     text-align: center;
   }
 
   nav ul {
-    position: absolute;
+    position: fixed;
     flex-direction: column;
-    gap: 0;
+    gap: 2rem;
     align-items: center;
-    top: 100%;
+    justify-content: center;
+    top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(3, 42, 95, 0.98);
+    height: 100vh;
+    background-color: rgba(10, 21, 40, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 1rem 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 5rem 2rem;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1000;
   }
 
   nav ul.active {
@@ -240,8 +290,8 @@ nav a.active::after {
 
   nav li {
     width: 100%;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   nav li:last-child {
@@ -252,6 +302,8 @@ nav a.active::after {
     padding: 0.8rem 0;
     display: block;
     width: 100%;
+    font-size: 1.2rem;
+    font-weight: 600;
   }
 
   nav a::after {

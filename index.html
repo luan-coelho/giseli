@@ -485,8 +485,13 @@
     </main>
 
     <!-- Botão Voltar ao Topo -->
-     <button id="back-to-top" aria-label="Voltar ao topo">
+    <button id="back-to-top" aria-label="Voltar ao topo">
       <i class="ph ph-arrow-up"></i>
+    </button>
+
+    <!-- Botão Flutuante de Menu para Mobile (visível apenas em dispositivos móveis) -->
+    <button id="menu-float-button" class="menu-float-button d-md-none" aria-label="Menu de navegação">
+      <img src="logos/simbolos/simbolo_giseli_branco.png" alt="Menu IA">
     </button>
 
     <footer class="site-footer">
@@ -544,23 +549,41 @@
     <script src="js/contact.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        const menuToggle = document.querySelector('.menu-toggle')
-        const navMenu = document.querySelector('nav ul')
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menuFloatButton = document.getElementById('menu-float-button');
+        const navMenu = document.querySelector('nav ul');
+        const body = document.body;
 
-        menuToggle.addEventListener('click', function () {
-          menuToggle.classList.toggle('active')
-          navMenu.classList.toggle('active')
-        })
+        // Função para alternar o menu (botão original)
+        if (menuToggle) {
+          menuToggle.addEventListener('click', function () {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            body.classList.toggle('menu-open');
+          });
+        }
+
+        // Função para alternar o menu (botão flutuante)
+        if (menuFloatButton) {
+          menuFloatButton.addEventListener('click', function() {
+            console.log('Botão de menu flutuante clicado');
+            menuFloatButton.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            body.classList.toggle('menu-open');
+          });
+        }
 
         // Close menu when a nav link is clicked
-        const navLinks = document.querySelectorAll('nav a')
+        const navLinks = document.querySelectorAll('nav a');
         navLinks.forEach(link => {
           link.addEventListener('click', function () {
-            menuToggle.classList.remove('active')
-            navMenu.classList.remove('active')
-          })
-        })
-      })
+            if (menuToggle) menuToggle.classList.remove('active');
+            if (menuFloatButton) menuFloatButton.classList.remove('active');
+            navMenu.classList.remove('active');
+            body.classList.remove('menu-open');
+          });
+        });
+      });
     </script>
 
     <script>
