@@ -188,17 +188,22 @@ nav a.active::after {
 
 @media (max-width: 576px) {
   .navbar {
-    padding: 1rem 0;
+    padding: 1rem 1.5rem;
+  }
+
+  /* Esconder a navbar quando tem as classes shrink ou scrolled */
+  .navbar.scrolled,
+  .navbar.shrink {
+    display: none;
   }
 
   .navbar .container {
     justify-content: center;
+    width: 100%;
   }
 
   .menu-toggle {
-    display: flex;
-    position: absolute;
-    right: 5%;
+    display: none;
   }
 
   nav {
