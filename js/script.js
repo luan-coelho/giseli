@@ -25,9 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Animação das partículas na seção de contato
   initContactParticles()
-
-  // Inicializar links de contato (anti-bot)
-  initContactLinks()
 })
 
 // Animate elements when they come into view
@@ -586,65 +583,6 @@ function initContactParticles() {
       item.style.transform = ''
     })
   })
-}
-
-// Function to initialize contact links
-function initContactLinks() {
-  // Email link
-  const emailLink = document.getElementById('email-link')
-  if (emailLink) {
-    const emailParts = ['giseli', '.ia', '@', 'tjto', '.jus', '.br']
-    const emailAddress = emailParts.join('')
-
-    // Set href attribute
-    emailLink.setAttribute('href', 'mailto:' + emailAddress)
-
-    // Add hover event to show email on hover
-    emailLink.addEventListener('mouseenter', function () {
-      const textContainer = this.querySelector('.contact-text')
-      if (textContainer && !textContainer.querySelector('span')) {
-        const emailSpan = document.createElement('span')
-        emailSpan.classList.add('contact-info-text')
-        emailSpan.textContent = emailAddress
-        textContainer.appendChild(emailSpan)
-      }
-    })
-
-    emailLink.addEventListener('mouseleave', function () {
-      const emailSpan = this.querySelector('.contact-info-text')
-      if (emailSpan) {
-        emailSpan.remove()
-      }
-    })
-  }
-
-  // Instagram link
-  const instagramLink = document.getElementById('instagram-link')
-  if (instagramLink) {
-    const instagramParts = ['https://instagram.com/', 'giseli', '.ia']
-    const instagramUrl = instagramParts.join('')
-
-    // Set href attribute
-    instagramLink.setAttribute('href', instagramUrl)
-
-    // Add hover event to show username on hover
-    instagramLink.addEventListener('mouseenter', function () {
-      const textContainer = this.querySelector('.contact-text')
-      if (textContainer && !textContainer.querySelector('span')) {
-        const instaSpan = document.createElement('span')
-        instaSpan.classList.add('contact-info-text')
-        instaSpan.textContent = '@' + instagramParts[1] + instagramParts[2]
-        textContainer.appendChild(instaSpan)
-      }
-    })
-
-    instagramLink.addEventListener('mouseleave', function () {
-      const instaSpan = this.querySelector('.contact-info-text')
-      if (instaSpan) {
-        instaSpan.remove()
-      }
-    })
-  }
 }
 
 // Scroll Animation

@@ -1,3 +1,12 @@
+#about .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
 /* Estilos do Carrossel - Versão melhorada */
 .carousel-container {
   position: relative;
@@ -18,8 +27,7 @@
 
 .carousel-item {
   width: calc((100% - 50px) / 3); /* Ajustado para o novo gap */
-  min-width: 280px;
-  height: 380px;
+  min-width: 450px;
   background-color: #031e5f;
   border-radius: 16px;
   padding: 35px 30px;
@@ -282,5 +290,79 @@
   
   .carousel-image {
     height: 70px;
+  }
+}
+
+/* Botão Saiba Mais */
+.carousel-button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: rgba(250, 186, 99, 0.15);
+  color: #faba63;
+  border: 1px solid rgba(250, 186, 99, 0.3);
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 20px;
+  transform: translateZ(15px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-button-link::before {
+  content: '';
+  position: absolute;
+  top: -1px; /* Estende 1px acima para cobrir a borda */
+  left: -1px; /* Estende 1px à esquerda para cobrir a borda */
+  width: calc(100% + 2px); /* Adiciona 2px para cobrir ambas as bordas laterais */
+  height: calc(100% + 2px); /* Adiciona 2px para cobrir ambas as bordas superior e inferior */
+  background-color: #faba63;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+  z-index: -1;
+  border-radius: 30px; /* Mantém o mesmo border-radius do botão */
+}
+
+.carousel-button-link:hover {
+  color: #031e5f;
+  border-color: transparent; /* Torna a borda transparente no hover */
+  transform: translateZ(25px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-button-link:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.carousel-button-link i {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+  position: relative; /* Garante que o ícone fique sobre o fundo animado */
+}
+
+.carousel-button-link:hover i {
+  transform: translateX(4px);
+}
+
+/* Ajuste para o espaçamento do texto quando tem botão */
+.carousel-item .carousel-text {
+  margin-bottom: 5px;
+}
+
+/* Responsividade para o botão */
+@media (max-width: 768px) {
+  .carousel-button-link {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    margin-top: 15px;
   }
 }
