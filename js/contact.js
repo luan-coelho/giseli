@@ -31,6 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
       emailLink.addEventListener('click', function(e) {
         e.preventDefault();
         
+        // Abrir o cliente de email
+        window.location.href = 'mailto:' + emailCompleto;
+        
         // Copiar o email para a área de transferência
         navigator.clipboard.writeText(emailCompleto).then(function() {
           // Criar elemento de mensagem de sucesso
