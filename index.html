@@ -609,5 +609,92 @@
         })
       })
     </script>
+
+    <script>
+      function updateCarousel() {
+        const carousel = document.querySelector('.carousel');
+        const items = document.querySelectorAll('.carousel-item');
+        const itemWidth = items[0].offsetWidth;
+        const gap = 30; // O gap entre os itens conforme definido no CSS
+        
+        // Calcular a distância exata para mover o carrossel
+        const moveDistance = itemWidth + gap;
+        
+        // Variável para controlar a posição atual
+        let position = 0;
+        
+        // Botões de navegação
+        const prevBtn = document.querySelector('.carousel-button.prev');
+        const nextBtn = document.querySelector('.carousel-button.next');
+        
+        // Determinar número de cards visíveis baseado no tamanho da tela
+        let visibleCards = window.innerWidth < 1350 ? 2 : 3;
+        
+        const maxPosition = (items.length - visibleCards) * moveDistance;
+        
+        // Remover event listeners anteriores para evitar duplicação
+        nextBtn.replaceWith(nextBtn.cloneNode(true));
+        prevBtn.replaceWith(prevBtn.cloneNode(true));
+        
+        // Obter referências atualizadas
+        const newNextBtn = document.querySelector('.carousel-button.next');
+        const newPrevBtn = document.querySelector('.carousel-button.prev');
+        
+        // Função para avançar o carrossel
+        function nextSlide() {
+          if (position < maxPosition) {
+            position += moveDistance;
+          } else {
+            // Reset para o início quando chegar ao final
+            position = 0;
+          }
+          carousel.style.transform = `translateX(-${position}px)`;
+        }
+        
+        // Função para voltar o carrossel
+        function prevSlide() {
+          if (position > 0) {
+            position -= moveDistance;
+          } else {
+            // Ir para o final quando estiver no início e clicar em voltar
+            position = maxPosition;
+          }
+          carousel.style.transform = `translateX(-${position}px)`;
+        }
+        
+        // Adicionar event listeners aos botões
+        newNextBtn.addEventListener('click', nextSlide);
+        newPrevBtn.addEventListener('click', prevSlide);
+        
+        // Autoplay do carrossel
+        let autoplayInterval;
+        
+        function startAutoplay() {
+          autoplayInterval = setInterval(nextSlide, 5000); // Avança a cada 5 segundos
+        }
+        
+        function stopAutoplay() {
+          clearInterval(autoplayInterval);
+        }
+        
+        // Iniciar autoplay
+        startAutoplay();
+        
+        // Parar autoplay quando o usuário interagir com o carrossel
+        carousel.addEventListener('mouseenter', stopAutoplay);
+        newNextBtn.addEventListener('mouseenter', stopAutoplay);
+        newPrevBtn.addEventListener('mouseenter', stopAutoplay);
+        
+        // Retomar autoplay quando o usuário parar de interagir
+        carousel.addEventListener('mouseleave', startAutoplay);
+        newNextBtn.addEventListener('mouseleave', startAutoplay);
+        newPrevBtn.addEventListener('mouseleave', startAutoplay);
+      }
+
+      // Inicializar o carrossel quando a página carregar
+      document.addEventListener('DOMContentLoaded', updateCarousel);
+      // Atualizar quando a janela for redimensionada
+      window.addEventListener('resize', updateCarousel);
+    </script>
   </body>
 </html>

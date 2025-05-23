@@ -6,6 +6,7 @@
   margin: 40px 0;
   overflow: hidden;
   min-width: 100%;
+  padding: 0;
 }
 
 .carousel {
@@ -14,10 +15,11 @@
   gap: 30px;
   width: 100%;
   padding: 30px 0;
+  margin-left: 0;
 }
 
 .carousel-item {
-  width: 350px;
+  width: 380px;
   height: 450px;
   background: linear-gradient(135deg, #213a5d 0%, #172947 100%);
   border-radius: 20px;
@@ -144,8 +146,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 65px;
-  height: 65px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: linear-gradient(135deg, #faba63 0%, #f5a740 100%);
   color: #031e5f;
@@ -162,7 +164,7 @@
 
 .carousel-button:hover {
   background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
-  transform: translateY(-50%) scale(1.15);
+  transform: translateY(-50%) scale(1.05);
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
 }
 
@@ -171,11 +173,11 @@
 }
 
 .carousel-button.prev {
-  left: 20px;
+  left: 0px;
 }
 
 .carousel-button.next {
-  right: 20px;
+  right: 0px;
 }
 
 .carousel-button i {

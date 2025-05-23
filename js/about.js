@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Isso garantirá que sempre haja cards suficientes para preencher a visualização
   function setupInfiniteCarousel() {
     // Clone os primeiros 3 items e adicione-os ao final
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 4; i++) {
       if (items[i]) {
         const clone = items[i].cloneNode(true);
         clone.classList.add('clone'); // Adiciona uma classe para identificar clones
