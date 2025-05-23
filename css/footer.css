@@ -346,6 +346,11 @@
     display: none;
   }
 
+  /* Centralizar logos das parcerias em dispositivos móveis */
+  .footer-links:has(a img) ul {
+    justify-content: center;
+  }
+
   .social-links {
     justify-content: center;
   }
@@ -369,5 +374,20 @@
 
   .footer-logo img {
     max-width: 150px;
+  }
+
+  /* Manter logos das parcerias lado a lado e centralizados */
+  .footer-links:has(a img) ul {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  /* Ajustar tamanho das imagens em telas pequenas */
+  .footer-links a img {
+    width: 60px;
+  }
+
+  .footer-links a img[alt="UFT"] {
+    width: 100px;
   }
 }
