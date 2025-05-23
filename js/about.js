@@ -7,26 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (!carousel || !prevButton || !nextButton || items.length === 0) return;
   
-  // Duplicar os primeiros cards para criar um efeito de loop infinito
-  // Isso garantirá que sempre haja cards suficientes para preencher a visualização
-  function setupInfiniteCarousel() {
-    // Clone os primeiros 3 items e adicione-os ao final
-    for (let i = 0; i < 4; i++) {
-      if (items[i]) {
-        const clone = items[i].cloneNode(true);
-        clone.classList.add('clone'); // Adiciona uma classe para identificar clones
-        carousel.appendChild(clone);
-      }
-    }
-  }
-  
   // Verifica se está em dispositivo móvel
   const isMobile = window.innerWidth <= 768;
-  
-  // Apenas configura o carrossel infinito se não for mobile
-  if (!isMobile) {
-    setupInfiniteCarousel();
-  }
   
   // Atualizar a coleção de itens após duplicação
   const allItems = document.querySelectorAll('.carousel-item');
