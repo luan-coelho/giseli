@@ -264,7 +264,7 @@ nav a.active::after {
   nav ul {
     position: fixed;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
     justify-content: center;
     top: 0;
@@ -274,12 +274,13 @@ nav a.active::after {
     background-color: rgba(10, 21, 40, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 5rem 2rem;
+    padding: 3rem 1.5rem;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
     z-index: 1000;
+    overflow-y: auto;
   }
 
   nav ul.active {
@@ -290,8 +291,9 @@ nav a.active::after {
 
   nav li {
     width: 100%;
-    padding: 0.8rem 0;
+    padding: 0.5rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
   }
 
   nav li:last-child {
@@ -299,14 +301,43 @@ nav a.active::after {
   }
 
   nav a {
-    padding: 0.8rem 0;
+    padding: 0.6rem 0;
     display: block;
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
   }
 
   nav a::after {
     display: none;
+  }
+}
+
+/* Para telas muito pequenas (smartphones pequenos) */
+@media (max-width: 400px) {
+  nav ul {
+    gap: 0.8rem;
+    padding: 2.5rem 1rem;
+  }
+
+  nav li {
+    padding: 0.4rem 0;
+  }
+
+  nav a {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  .menu-float-button {
+    width: 45px;
+    height: 45px;
+    bottom: 14px;
+    left: 10px;
+  }
+
+  .menu-float-button img {
+    width: 25px;
+    height: 25px;
   }
 } 

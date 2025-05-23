@@ -596,14 +596,6 @@
     gap: 1.5rem;
   }
 
-  .impact-card {
-    padding: 0.5rem;
-  }
-
-  .impact-card h3 {
-    font-size: 1.4rem;
-  }
-
   .future-cta h3 {
     font-size: 1.8rem;
   }
@@ -624,35 +616,7 @@
 
 @media (max-width: 768px) {
   .future-impact {
-    padding: 5rem 0;
-  }
-
-  .impact-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-  }
-
-  .impact-card {
-    padding: 0.5rem;
-    font-size: 0.9rem;
-  }
-
-  .impact-card h3 {
-    font-size: 1.2rem;
-  }
-
-  .impact-icon {
-    width: 60px;
-    height: 60px;
-    margin: 1rem auto 0.5rem;
-  }
-
-  .impact-icon i {
-    font-size: 2rem;
-  }
-
-  .impact-content {
-    padding: 1rem 0.5rem 1.5rem;
+    padding: 4rem 0;
   }
 
   .future-cta {
@@ -681,72 +645,44 @@
     font-size: 1.5rem;
   }
   
-  .future-impact {
-    padding: 4rem 0;
-  }
-
   .impact-cards-container {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 2rem !important;
   }
 
   .impact-card {
-    width: 100%;
-    max-width: 500px;
-    margin-bottom: 1.5rem;
-  }
-
-  .impact-card h3 {
-    font-size: 1.2rem;
+    width: 100% !important;
+    max-width: none !important;
+    margin-bottom: 0 !important;
+    padding: 2.5rem 2rem !important;
+    min-height: 280px !important;
+    flex: none !important;
   }
 
   .impact-icon-container {
-    width: 70px;
-    height: 70px;
+    width: 90px !important;
+    height: 90px !important;
+    margin-bottom: 2rem !important;
   }
 
   .impact-icon-container i {
-    font-size: 1.5rem;
+    font-size: 2.2rem !important;
+  }
+
+  .impact-card h3 {
+    font-size: 1.6rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .impact-content p {
+    font-size: 1.1rem !important;
+    line-height: 1.7 !important;
+    max-width: 100% !important;
   }
 }
 
 @media (max-width: 576px) {
-  .impact-grid {
-    gap: 0.5rem;
-  }
-
-  .impact-card {
-    padding: 0.25rem;
-  }
-
-  .impact-card h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-
-  .impact-card p {
-    font-size: 0.8rem;
-    margin-bottom: 0;
-  }
-
-  .impact-icon {
-    width: 50px;
-    height: 50px;
-  }
-
-  .impact-icon i {
-    font-size: 1.5rem;
-  }
-
-  .meter-value {
-    font-size: 0.9rem;
-  }
-
-  .meter-label {
-    font-size: 0.7rem;
-  }
-
   .future-cta {
     padding: 1.5rem;
   }
@@ -771,6 +707,63 @@
 
   .tech-icon i {
     font-size: 1.2rem;
+  }
+
+  .impact-cards-container {
+    gap: 1.5rem !important;
+  }
+
+  .impact-card {
+    padding: 2rem 1.5rem !important;
+    min-height: 260px !important;
+    border-radius: 12px !important;
+  }
+
+  .impact-icon-container {
+    width: 80px !important;
+    height: 80px !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .impact-icon-container i {
+    font-size: 2rem !important;
+  }
+
+  .impact-card h3 {
+    font-size: 1.4rem !important;
+    margin-bottom: 1.2rem !important;
+  }
+
+  .impact-content p {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .impact-card {
+    padding: 1.8rem 1.2rem !important;
+    min-height: 240px !important;
+  }
+
+  .impact-icon-container {
+    width: 70px !important;
+    height: 70px !important;
+    margin-bottom: 1.2rem !important;
+  }
+
+  .impact-icon-container i {
+    font-size: 1.8rem !important;
+  }
+
+  .impact-card h3 {
+    font-size: 1.3rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .impact-content p {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
   }
 }
 
