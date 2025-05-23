@@ -119,6 +119,52 @@
   transform: translateX(3px);
 }
 
+/* Partnership logos styling */
+.footer-links a img {
+  width: 70px;
+  margin-right: 10px;
+  vertical-align: middle;
+  filter: brightness(0.8) contrast(1.2);
+  transition: all 0.3s ease;
+  border-radius: 3px;
+}
+
+.footer-links a:hover img {
+  filter: brightness(1) contrast(1);
+  transform: scale(1.1);
+}
+
+/* Special styling for partnership links with images */
+.footer-links a:has(img) {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+}
+
+.footer-links a:has(img)::before {
+  display: none;
+}
+
+/* Partnership section - logos side by side */
+.footer-links:has(a img) ul {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.footer-links:has(a img) li {
+  margin-bottom: 0;
+}
+
+.footer-links:has(a img) a img {
+  margin-right: 0;
+}
+
+/* Specific sizing for UFT logo */
+.footer-links a img[alt="UFT"] {
+  width: 120px;
+}
+
 /* Contact section with social icons */
 .social-links {
   display: flex;
