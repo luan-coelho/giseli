@@ -4,6 +4,11 @@
   position: relative;
   overflow: hidden;
   padding: 7rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
 }
 
 .other-tools::before {
@@ -27,6 +32,16 @@
   font-size: 2.5rem;
 }
 
+.other-tools .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .other-tools .section-title::after {
   content: '';
   position: absolute;
@@ -42,8 +57,8 @@
 
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
   position: relative;
   z-index: 1;
   margin-top: 40px;
@@ -53,7 +68,7 @@
   background: rgba(23, 41, 71, 0.9);
   border-radius: 16px;
   backdrop-filter: blur(10px);
-  padding: 35px 25px;
+  padding: 25px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,10 +76,9 @@
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
-  min-height: 250px;
+  aspect-ratio: 1;
   color: white;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  height: 100%;
   justify-content: center;
 }
 
@@ -94,12 +108,13 @@
 
 .tool-logo {
   width: 100%;
-  height: 110px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.5s ease;
   position: relative;
+  margin-bottom: 15px;
 }
 
 .tool-logo::after {
@@ -108,8 +123,8 @@
 
 .tool-logo img,
 .tool-card .card-image {
-  max-width: 85%;
-  max-height: 80px;
+  max-width: 70%;
+  max-height: 60px;
   object-fit: contain;
   filter: brightness(1.1);
   transition: all 0.5s ease;
@@ -136,8 +151,8 @@
 .tool-card .card-text {
   color: rgba(255, 255, 255, 0.9);
   text-align: center;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.4;
   transition: all 0.3s ease;
   margin: 0;
   z-index: 1;
@@ -167,12 +182,13 @@
 }
 
 .tool-card h2 {
-  font-size: 2.5rem;
+  font-size: 1.9rem;
   color: #ffffff;
   font-weight: 800;
   font-family: 'Poppins', sans-serif;
   text-align: center;
   line-height: 1.2;
+  margin-bottom: 10px;
 }
 
 /* Continuação dos estilos da seção Outras Ferramentas */
@@ -357,22 +373,50 @@
 }
 
 /* Enhanced responsive behavior */
+@media (max-width: 1400px) {
+  .tools-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+  }
+}
+
 @media (max-width: 1200px) {
   .tools-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 25px;
+    justify-items: center;
+  }
+
+  .tool-card:nth-child(4) {
+    grid-column: 1 / 2;
+    grid-row: 2;
+    justify-self: end;
+  }
+  
+  .tool-card:nth-child(5) {
+    grid-column: 3 / 4;
+    grid-row: 2;
+    justify-self: start;
   }
 }
 
 @media (max-width: 992px) {
   .tool-card {
-    padding: 30px 20px;
-    min-height: 230px;
+    padding: 20px 15px;
   }
 
   .tool-logo {
-    height: 90px;
-    margin-bottom: 25px;
+    height: 70px;
+    margin-bottom: 12px;
+  }
+  
+  .tool-card h2 {
+    font-size: 1.7rem;
+  }
+  
+  .tool-card p,
+  .tool-card .card-text {
+    font-size: 0.85rem;
   }
 }
 
@@ -385,18 +429,37 @@
   .tools-intro p {
     font-size: 1rem;
   }
+
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+
+  .tool-card:nth-child(4),
+  .tool-card:nth-child(5) {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: center;
+  }
+
+  .tool-card:nth-child(5) {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: center;
+  }
 }
 
 @media (max-width: 576px) {
   .tools-grid {
     grid-template-columns: 1fr;
-    max-width: 320px;
+    max-width: 280px;
     margin-left: auto;
     margin-right: auto;
   }
 
   .tool-card {
-    padding: 30px 20px;
+    padding: 20px 15px;
   }
 
   .tool-card:hover {
