@@ -574,39 +574,83 @@
     <script src="js/contact.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
+        // Elementos do menu
         const menuToggle = document.querySelector('.menu-toggle')
         const menuFloatButton = document.getElementById('menu-float-button')
         const navMenu = document.querySelector('nav ul')
         const body = document.body
 
-        // Função para alternar o menu (botão original)
-        if (menuToggle) {
-          menuToggle.addEventListener('click', function () {
-            menuToggle.classList.toggle('active')
-            navMenu.classList.toggle('active')
-            body.classList.toggle('menu-open')
-          })
+        // Função para abrir/fechar menu
+        function toggleMenu() {
+          const isActive = navMenu.classList.contains('active')
+          
+          if (isActive) {
+            // Fechar menu
+            navMenu.classList.remove('active')
+            body.classList.remove('menu-open')
+            if (menuFloatButton) menuFloatButton.classList.remove('active')
+            if (menuToggle) menuToggle.classList.remove('active')
+          } else {
+            // Abrir menu
+            navMenu.classList.add('active')
+            body.classList.add('menu-open')
+            if (menuFloatButton) menuFloatButton.classList.add('active')
+            if (menuToggle) menuToggle.classList.add('active')
+          }
+          
+          console.log('Menu toggled:', !isActive, 'Scroll position:', window.scrollY)
         }
 
-        // Função para alternar o menu (botão flutuante)
+        // Event listener para botão flutuante (mobile)
         if (menuFloatButton) {
-          menuFloatButton.addEventListener('click', function () {
-            console.log('Botão de menu flutuante clicado')
-            menuFloatButton.classList.toggle('active')
-            navMenu.classList.toggle('active')
-            body.classList.toggle('menu-open')
+          menuFloatButton.addEventListener('click', function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+            toggleMenu()
           })
         }
 
-        // Close menu when a nav link is clicked
+        // Event listener para botão toggle (desktop)
+        if (menuToggle) {
+          menuToggle.addEventListener('click', function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+            toggleMenu()
+          })
+        }
+
+        // Fechar menu ao clicar nos links
         const navLinks = document.querySelectorAll('nav a')
         navLinks.forEach(link => {
           link.addEventListener('click', function () {
-            if (menuToggle) menuToggle.classList.remove('active')
-            if (menuFloatButton) menuFloatButton.classList.remove('active')
             navMenu.classList.remove('active')
             body.classList.remove('menu-open')
+            if (menuFloatButton) menuFloatButton.classList.remove('active')
+            if (menuToggle) menuToggle.classList.remove('active')
           })
+        })
+
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', function (e) {
+          if (navMenu.classList.contains('active') && 
+              !navMenu.contains(e.target) && 
+              !menuFloatButton?.contains(e.target) && 
+              !menuToggle?.contains(e.target)) {
+            navMenu.classList.remove('active')
+            body.classList.remove('menu-open')
+            if (menuFloatButton) menuFloatButton.classList.remove('active')
+            if (menuToggle) menuToggle.classList.remove('active')
+          }
+        })
+
+        // Fechar menu com ESC
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active')
+            body.classList.remove('menu-open')
+            if (menuFloatButton) menuFloatButton.classList.remove('active')
+            if (menuToggle) menuToggle.classList.remove('active')
+          }
         })
       })
     </script>

@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize carousel
   initCarousel()
 
-  // Menu functionality
-  initMenuFunctionality()
+  // Menu functionality - desabilitado para evitar conflitos com implementação inline
+  // initMenuFunctionality()
 
   // Scroll button functionality
   initScrollButton()
@@ -371,11 +371,11 @@ buttons.forEach(button => {
 
 // Menu functionality
 function initMenuFunctionality() {
-  // Mobile menu toggle
+  // Mobile menu toggle - apenas para telas maiores que 576px
   const menuToggle = document.querySelector('.menu-toggle')
   const navMenu = document.querySelector('nav ul')
 
-  if (menuToggle) {
+  if (menuToggle && window.innerWidth > 576) {
     menuToggle.addEventListener('click', function () {
       this.classList.toggle('active')
       navMenu.classList.toggle('active')
