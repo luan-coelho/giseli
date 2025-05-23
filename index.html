@@ -107,7 +107,8 @@
                 </div>
                 <h3 class="carousel-title">Corregedoria</h3>
                 <p class="carousel-text">
-                  Órgão responsável pela fiscalização e orientação dos serviços extrajudiciais no estado do Tocantins.
+                  A Corregedoria-Geral da Justiça do Estado do Tocantins possui uma atuação voltada para o controle, a
+                  orientação e a fiscalização dos serviços judiciais e extrajudiciais do estado.
                 </p>
                 <a
                   href="https://corregedoria.tjto.jus.br/institucional/sobre-a-corregedoria"
@@ -124,8 +125,8 @@
                 </div>
                 <h3 class="carousel-title">GISE</h3>
                 <p class="carousel-text">
-                  Sistema de Gestão Integrada das Serventias Extrajudiciais que concentra informações dos cartórios do
-                  Tocantins.
+                  O Sistema de Gestão Integrada das Serventias Extrajudiciais (GISE) é uma ferramenta eletrônica de
+                  monitoramento dos atos praticados pelas serventias extrajudiciais (cartórios) do Estado do Tocantins.
                 </p>
               </div>
 
@@ -135,8 +136,8 @@
                 </div>
                 <h3 class="carousel-title">GiseLI</h3>
                 <p class="carousel-text">
-                  Inteligência Artificial aplicada à análise de dados extrajudiciais para verificação de conformidade e
-                  integridade.
+                  O Sistema de Gestão Integrada das Serventias Extrajudiciais (GISE) é uma ferramenta eletrônica de
+                  monitoramento dos atos praticados pelas serventias extrajudiciais (cartórios) do Estado do Tocantins.
                 </p>
               </div>
             </div>
@@ -491,7 +492,7 @@
 
     <!-- Botão Flutuante de Menu para Mobile (visível apenas em dispositivos móveis) -->
     <button id="menu-float-button" class="menu-float-button d-md-none" aria-label="Menu de navegação">
-      <img src="logos/simbolos/simbolo_giseli_branco.png" alt="Menu IA">
+      <img src="logos/simbolos/simbolo_giseli_branco.png" alt="Menu IA" />
     </button>
 
     <footer class="site-footer">
@@ -565,41 +566,41 @@
     <script src="js/contact.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        const menuToggle = document.querySelector('.menu-toggle');
-        const menuFloatButton = document.getElementById('menu-float-button');
-        const navMenu = document.querySelector('nav ul');
-        const body = document.body;
+        const menuToggle = document.querySelector('.menu-toggle')
+        const menuFloatButton = document.getElementById('menu-float-button')
+        const navMenu = document.querySelector('nav ul')
+        const body = document.body
 
         // Função para alternar o menu (botão original)
         if (menuToggle) {
           menuToggle.addEventListener('click', function () {
-            menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            body.classList.toggle('menu-open');
-          });
+            menuToggle.classList.toggle('active')
+            navMenu.classList.toggle('active')
+            body.classList.toggle('menu-open')
+          })
         }
 
         // Função para alternar o menu (botão flutuante)
         if (menuFloatButton) {
-          menuFloatButton.addEventListener('click', function() {
-            console.log('Botão de menu flutuante clicado');
-            menuFloatButton.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            body.classList.toggle('menu-open');
-          });
+          menuFloatButton.addEventListener('click', function () {
+            console.log('Botão de menu flutuante clicado')
+            menuFloatButton.classList.toggle('active')
+            navMenu.classList.toggle('active')
+            body.classList.toggle('menu-open')
+          })
         }
 
         // Close menu when a nav link is clicked
-        const navLinks = document.querySelectorAll('nav a');
+        const navLinks = document.querySelectorAll('nav a')
         navLinks.forEach(link => {
           link.addEventListener('click', function () {
-            if (menuToggle) menuToggle.classList.remove('active');
-            if (menuFloatButton) menuFloatButton.classList.remove('active');
-            navMenu.classList.remove('active');
-            body.classList.remove('menu-open');
-          });
-        });
-      });
+            if (menuToggle) menuToggle.classList.remove('active')
+            if (menuFloatButton) menuFloatButton.classList.remove('active')
+            navMenu.classList.remove('active')
+            body.classList.remove('menu-open')
+          })
+        })
+      })
     </script>
 
     <script>
@@ -628,89 +629,89 @@
 
     <script>
       function updateCarousel() {
-        const carousel = document.querySelector('.carousel');
-        const items = document.querySelectorAll('.carousel-item');
-        const itemWidth = items[0].offsetWidth;
-        const gap = 30; // O gap entre os itens conforme definido no CSS
-        
+        const carousel = document.querySelector('.carousel')
+        const items = document.querySelectorAll('.carousel-item')
+        const itemWidth = items[0].offsetWidth
+        const gap = 30 // O gap entre os itens conforme definido no CSS
+
         // Calcular a distância exata para mover o carrossel
-        const moveDistance = itemWidth + gap;
-        
+        const moveDistance = itemWidth + gap
+
         // Variável para controlar a posição atual
-        let position = 0;
-        
+        let position = 0
+
         // Botões de navegação
-        const prevBtn = document.querySelector('.carousel-button.prev');
-        const nextBtn = document.querySelector('.carousel-button.next');
-        
+        const prevBtn = document.querySelector('.carousel-button.prev')
+        const nextBtn = document.querySelector('.carousel-button.next')
+
         // Determinar número de cards visíveis baseado no tamanho da tela
-        let visibleCards = window.innerWidth < 1350 ? 2 : 3;
-        
-        const maxPosition = (items.length - visibleCards) * moveDistance;
-        
+        let visibleCards = window.innerWidth < 1350 ? 2 : 3
+
+        const maxPosition = (items.length - visibleCards) * moveDistance
+
         // Remover event listeners anteriores para evitar duplicação
-        nextBtn.replaceWith(nextBtn.cloneNode(true));
-        prevBtn.replaceWith(prevBtn.cloneNode(true));
-        
+        nextBtn.replaceWith(nextBtn.cloneNode(true))
+        prevBtn.replaceWith(prevBtn.cloneNode(true))
+
         // Obter referências atualizadas
-        const newNextBtn = document.querySelector('.carousel-button.next');
-        const newPrevBtn = document.querySelector('.carousel-button.prev');
-        
+        const newNextBtn = document.querySelector('.carousel-button.next')
+        const newPrevBtn = document.querySelector('.carousel-button.prev')
+
         // Função para avançar o carrossel
         function nextSlide() {
           if (position < maxPosition) {
-            position += moveDistance;
+            position += moveDistance
           } else {
             // Reset para o início quando chegar ao final
-            position = 0;
+            position = 0
           }
-          carousel.style.transform = `translateX(-${position}px)`;
+          carousel.style.transform = `translateX(-${position}px)`
         }
-        
+
         // Função para voltar o carrossel
         function prevSlide() {
           if (position > 0) {
-            position -= moveDistance;
+            position -= moveDistance
           } else {
             // Ir para o final quando estiver no início e clicar em voltar
-            position = maxPosition;
+            position = maxPosition
           }
-          carousel.style.transform = `translateX(-${position}px)`;
+          carousel.style.transform = `translateX(-${position}px)`
         }
-        
+
         // Adicionar event listeners aos botões
-        newNextBtn.addEventListener('click', nextSlide);
-        newPrevBtn.addEventListener('click', prevSlide);
-        
+        newNextBtn.addEventListener('click', nextSlide)
+        newPrevBtn.addEventListener('click', prevSlide)
+
         // Autoplay do carrossel
-        let autoplayInterval;
-        
+        let autoplayInterval
+
         function startAutoplay() {
-          autoplayInterval = setInterval(nextSlide, 5000); // Avança a cada 5 segundos
+          autoplayInterval = setInterval(nextSlide, 5000) // Avança a cada 5 segundos
         }
-        
+
         function stopAutoplay() {
-          clearInterval(autoplayInterval);
+          clearInterval(autoplayInterval)
         }
-        
+
         // Iniciar autoplay
-        startAutoplay();
-        
+        startAutoplay()
+
         // Parar autoplay quando o usuário interagir com o carrossel
-        carousel.addEventListener('mouseenter', stopAutoplay);
-        newNextBtn.addEventListener('mouseenter', stopAutoplay);
-        newPrevBtn.addEventListener('mouseenter', stopAutoplay);
-        
+        carousel.addEventListener('mouseenter', stopAutoplay)
+        newNextBtn.addEventListener('mouseenter', stopAutoplay)
+        newPrevBtn.addEventListener('mouseenter', stopAutoplay)
+
         // Retomar autoplay quando o usuário parar de interagir
-        carousel.addEventListener('mouseleave', startAutoplay);
-        newNextBtn.addEventListener('mouseleave', startAutoplay);
-        newPrevBtn.addEventListener('mouseleave', startAutoplay);
+        carousel.addEventListener('mouseleave', startAutoplay)
+        newNextBtn.addEventListener('mouseleave', startAutoplay)
+        newPrevBtn.addEventListener('mouseleave', startAutoplay)
       }
 
       // Inicializar o carrossel quando a página carregar
-      document.addEventListener('DOMContentLoaded', updateCarousel);
+      document.addEventListener('DOMContentLoaded', updateCarousel)
       // Atualizar quando a janela for redimensionada
-      window.addEventListener('resize', updateCarousel);
+      window.addEventListener('resize', updateCarousel)
     </script>
   </body>
 </html>
