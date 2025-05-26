@@ -427,13 +427,21 @@
 
             <a href="https://selodigital.tjto.jus.br" target="_blank" class="tool-card" data-scroll-animate>
               <div class="tool-logo">
-                <img src="logos/brancas sem fundo/selodigital_s_texto.png" alt="Selo Digital" class="card-image" />
+                <img
+                  src="logos/brancas sem fundo/selodigital_s_texto.png"
+                  alt="Selo Digital"
+                  class="card-image"
+                  style="max-width: 100% !important; max-height: 100% !important" />
                 <div class="tool-glow"></div>
               </div>
               <p class="card-text">Aplicativo para consulta do Selo Digital</p>
             </a>
 
-            <a href="https://corregedoria.tjto.jus.br/extrajudicial" target="_blank" class="tool-card" data-scroll-animate>
+            <a
+              href="https://corregedoria.tjto.jus.br/extrajudicial"
+              target="_blank"
+              class="tool-card"
+              data-scroll-animate>
               <h2>Portal Extrajudicial</h2>
               <div class="tool-glow"></div>
               <p class="card-text">Todas as informações da área extrajudicial do Tocantins</p>
@@ -588,7 +596,7 @@
         // Função para abrir/fechar menu
         function toggleMenu() {
           const isActive = navMenu.classList.contains('active')
-          
+
           if (isActive) {
             // Fechar menu
             navMenu.classList.remove('active')
@@ -602,7 +610,7 @@
             if (menuFloatButton) menuFloatButton.classList.add('active')
             if (menuToggle) menuToggle.classList.add('active')
           }
-          
+
           console.log('Menu toggled:', !isActive, 'Scroll position:', window.scrollY)
         }
 
@@ -637,10 +645,12 @@
 
         // Fechar menu ao clicar fora
         document.addEventListener('click', function (e) {
-          if (navMenu.classList.contains('active') && 
-              !navMenu.contains(e.target) && 
-              !menuFloatButton?.contains(e.target) && 
-              !menuToggle?.contains(e.target)) {
+          if (
+            navMenu.classList.contains('active') &&
+            !navMenu.contains(e.target) &&
+            !menuFloatButton?.contains(e.target) &&
+            !menuToggle?.contains(e.target)
+          ) {
             navMenu.classList.remove('active')
             body.classList.remove('menu-open')
             if (menuFloatButton) menuFloatButton.classList.remove('active')
