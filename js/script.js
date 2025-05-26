@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize carousel
   initCarousel()
 
-  // Menu functionality - desabilitado para evitar conflitos com implementação inline
-  // initMenuFunctionality()
+  // Menu functionality - habilitado para funcionar corretamente
+  initMenuFunctionality()
 
   // Scroll button functionality
   initScrollButton()
@@ -382,39 +382,91 @@ function initMenuFunctionality() {
     })
   }
 
-  // Active menu item based on scroll position
-  const sections = document.querySelectorAll('section[id]')
-  const navLinks = document.querySelectorAll('nav ul li a')
+  // Active menu item based on scroll position - apenas para dispositivos não móveis
+  if (window.innerWidth > 768) {
+    const sections = document.querySelectorAll('section[id]')
+    const navLinks = document.querySelectorAll('nav ul li a')
 
-  function highlightNavItem() {
-    const scrollPosition = window.scrollY
+    function highlightNavItem() {
+      const scrollPosition = window.scrollY + 150 // Offset para melhor detecção
+      const windowHeight = window.innerHeight
+      let activeSection = null
 
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 100
-      const sectionHeight = section.offsetHeight
-      const sectionId = section.getAttribute('id')
+      // Encontra a seção atualmente visível
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop
+        const sectionHeight = section.offsetHeight
+        const sectionBottom = sectionTop + sectionHeight
+        const sectionId = section.getAttribute('id')
 
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        navLinks.forEach(link => {
-          link.classList.remove('active')
-          if (link.getAttribute('href') === `#${sectionId}`) {
-            link.classList.add('active')
-          }
+        // Verifica se a seção está na viewport
+        if (scrollPosition >= sectionTop - 200 && scrollPosition < sectionBottom - 100) {
+          activeSection = sectionId
+        }
+      })
+
+      // Se estamos no topo da página, sempre destacar "Início"
+      if (scrollPosition < 200) {
+        activeSection = 'home'
+      }
+
+      // Se estamos no final da página, destacar a última seção
+      if (window.innerHeight + scrollPosition >= document.documentElement.scrollHeight - 100) {
+        const lastSection = sections[sections.length - 1]
+        if (lastSection) {
+          activeSection = lastSection.getAttribute('id')
+        }
+      }
+
+      // Atualiza os links da navegação
+      navLinks.forEach(link => {
+        link.classList.remove('active')
+        const linkHref = link.getAttribute('href')
+        if (linkHref === `#${activeSection}`) {
+          link.classList.add('active')
+        }
+      })
+    }
+
+    // Chama a função imediatamente para definir o estado inicial
+    highlightNavItem()
+
+    // Adiciona throttling para melhor performance
+    let ticking = false
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          highlightNavItem()
+          ticking = false
         })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', requestTick)
+
+    // Atualiza quando a janela é redimensionada
+    window.addEventListener('resize', () => {
+      // Se mudou para mobile, remove os event listeners
+      if (window.innerWidth <= 768) {
+        window.removeEventListener('scroll', requestTick)
+        // Remove classe active de todos os links
+        navLinks.forEach(link => link.classList.remove('active'))
+        // Adiciona active apenas no primeiro link (Início)
+        if (navLinks[0]) navLinks[0].classList.add('active')
       }
     })
   }
 
-  window.addEventListener('scroll', highlightNavItem)
-
   // Smooth scrolling for menu links
+  const navLinks = document.querySelectorAll('nav ul li a')
   navLinks.forEach(link => {
     link.addEventListener('click', function (e) {
       e.preventDefault()
 
       // Close mobile menu if open
-      if (navMenu.classList.contains('active')) {
-        menuToggle.classList.remove('active')
+      if (navMenu && navMenu.classList.contains('active')) {
+        if (menuToggle) menuToggle.classList.remove('active')
         navMenu.classList.remove('active')
       }
 
@@ -422,10 +474,47 @@ function initMenuFunctionality() {
       const targetSection = document.querySelector(targetId)
 
       if (targetSection) {
+        const navbarHeight = document.querySelector('.navbar').offsetHeight
+        const offsetTop = targetSection.offsetTop - navbarHeight - 20
+
         window.scrollTo({
-          top: targetSection.offsetTop - 70,
+          top: offsetTop,
           behavior: 'smooth',
         })
+
+        // Força a atualização do item ativo após o scroll (apenas em desktop)
+        if (window.innerWidth > 768) {
+          setTimeout(() => {
+            // Re-executa a função de highlight se ela existir
+            const sections = document.querySelectorAll('section[id]')
+            const navLinks = document.querySelectorAll('nav ul li a')
+            const scrollPosition = window.scrollY + 150
+            let activeSection = null
+
+            sections.forEach(section => {
+              const sectionTop = section.offsetTop
+              const sectionHeight = section.offsetHeight
+              const sectionBottom = sectionTop + sectionHeight
+              const sectionId = section.getAttribute('id')
+
+              if (scrollPosition >= sectionTop - 200 && scrollPosition < sectionBottom - 100) {
+                activeSection = sectionId
+              }
+            })
+
+            if (scrollPosition < 200) {
+              activeSection = 'home'
+            }
+
+            navLinks.forEach(link => {
+              link.classList.remove('active')
+              const linkHref = link.getAttribute('href')
+              if (linkHref === `#${activeSection}`) {
+                link.classList.add('active')
+              }
+            })
+          }, 100)
+        }
       }
     })
   })

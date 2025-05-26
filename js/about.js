@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const prevButton = document.querySelector('.carousel-button.prev');
   const nextButton = document.querySelector('.carousel-button.next');
   const items = document.querySelectorAll('.carousel-item');
-  const container = document.querySelector('.carousel-container');
   
   if (!carousel || !prevButton || !nextButton || items.length === 0) return;
   
@@ -15,30 +14,27 @@ document.addEventListener('DOMContentLoaded', function() {
   
   let currentIndex = 0;
   let carouselInterval;
-  const itemsToShow = 3; // Queremos exibir 3 cards
   
   // Calcula a largura que cada card deve ocupar para exibir 3 cards
   function calculateCardWidth() {
     const windowWidth = window.innerWidth;
     
     if (windowWidth <= 768) {
-      return 0; // Em mobile não precisa calcular, já que é exibição vertical
+      return 0;
     } else if (windowWidth <= 992) {
-      return allItems[0].offsetWidth + 20; // Para tablets, considere 2 cards
+      return allItems[0].offsetWidth + 20;
     } else {
-      // Para desktop, use o tamanho do card + gap
       return allItems[0].offsetWidth + 20;
     }
   }
   
   // Função para iniciar o carrossel automático
   function startAutoCarousel() {
-    // Não iniciar carrossel automático em dispositivos móveis
     if (isMobile) return;
     
     carouselInterval = setInterval(() => {
       nextSlide();
-    }, 10000); // Avança a cada 10 segundos
+    }, 10000);
   }
   
   // Função para parar o carrossel automático
